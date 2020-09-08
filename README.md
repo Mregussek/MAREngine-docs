@@ -2,6 +2,22 @@
 
 Repository, where you can find all code responsible for MAREngine documentation.
 
+## Make HTML
+
+### Windows
+
+Make sure that you have sphinx installed!
+
+```bash
+pip install sphinx
+```
+
+Build website:
+
+```powershell
+python -m sphinx.cmd.build -b html ./ _build
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

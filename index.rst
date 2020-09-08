@@ -1,20 +1,50 @@
-.. MAREngine-docs documentation master file, created by
-   sphinx-quickstart on Tue Sep  8 19:34:09 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to MAREngine-docs's documentation!
+Welcome to MAREngine's documentation!
 ==========================================
 
+The table of contents below and in the sidebar should let you easily access the
+documentation for your topic of interest. You can also use the search function
+in the top left corner.
+
+The main documentation for the site is organized into the following sections:
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :caption: General
+   :name: sec-general
+
+   general/about
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting started
+   :name: sec-learn
 
-Indices and tables
-==================
+   getting_started/editor
+   getting_started/scripting
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials
+   :name: sec-tutorials
+
+   tutorials/3d
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Development
+   :name: sec-devel
+
+   development/compiling
+   development/cpp
+   development/file_formats
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Community
+   :name: sec-community
+
+   community/contributing

@@ -48,3 +48,12 @@ The main documentation for the site is organized into the following sections:
    :name: sec-community
 
    community/contributing
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Community
+   :name: sec-community
+
+   coding_standards/standards 
+   coding_standards/practices 

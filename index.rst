@@ -57,3 +57,4 @@ The main documentation for the site is organized into the following sections:
 
    coding_standards/standards 
    coding_standards/practices 
+   coding_standards/optimizations

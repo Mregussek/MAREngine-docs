@@ -9,6 +9,7 @@ Optimizations
 Variables
 ---------
 
+
 Stack
 ~~~~~
 
@@ -45,6 +46,7 @@ An enum is simply an integer in disguise. Enums are exactly as efficient as inte
 
 Functions
 ---------
+
 
 The function call makes the microprocessor jump to a different code address and back again. This may take up to 4 clock cycles. In most cases the microprocessor is able to overlap the call and return operations with other calculations to save time.
 
@@ -83,6 +85,7 @@ A function that is used only within the same module (i.e. the current .cpp file)
 Classes
 -------
 
+
 Data Allignment
 ~~~~~~~~~~~~~~~
 
@@ -113,49 +116,118 @@ Each instance of a polymorphic class has a pointer to a table of pointers to the
 Polymorphism is one of the main reasons why object oriented programs can be less efficient than non-object oriented programs. If you can avoid virtual functions then you can obtain most of the advantages of object oriented programming without paying the performance costs.
 The time it takes to call a virtual member function is a few clock cycles more than it takes to call a non-virtual member function, provided that the function call statement always calls the same version of the virtual function. If the version changes then you may get a misprediction penalty of 10 - 20 clock cycles.
 
-Good practices
---------------
 
-Passing arguments
-~~~~~~~~~~~~~~~~~
+Some examples of optimizations
+------------------------------
 
-* Pass simple things by value
-    * Built in types (size_t, uint32_t, float)
-    * Maybe your simple types (16 bytes)
-    * But remember, you are making a copy
-* Pass things by value when you need to modify a copy
-    * There is no point in taking a const& parameter, if you are immediately going to make a copy anyway
-* Do not pass object by non-const reference, it makes it more clear for the reader what is happening if you use pointer.
-
-Examples:
+Example of optimization
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: cpp
 
-    std::vector<int32_t> load_numbers(std::vector<int32_t>&& v) {
-        // no constructor! size 0, capacity 1000
-        for(int32_t i = 1; i <= 1000; i++) { v.push_back(i); } // 0 allocations!
-        return v; // copy constructor
+    #include <iostream>
+    using namespace std;
+
+    int main() {
+        int length;
+        string greet1 = "Hello";
+        string greet2 = ", World!";
+        string greet3 = greet1 + greet2;
+
+        length = greet3.size();
+    }
+
+.. code-block:: cpp
+
+    #include <string>
+
+    int main() {
+        const std::string greet1 = "Hello";
+        const std::string greet2 = ", World!";
+        const auto greet3 = greet1 + greet2;
+        const auto length = greet3.size();
+        return length;
+    }
+
+
+Example of optimization #2
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+    #include <iostream>
+
+    int main() {
+        int i, n, fact = 1;
+        std::cout << "Enter: ";
+        std::cin >> n;
+        
+        for(i = 1; i <= n; i++) { fact *= i; }
+
+        std::cout << "Factorial: " << fact << std::endl; 
+    }
+
+
+Everything is calculated at compile-time below:
+
+.. code-block:: cpp
+
+    #include <iostream>
+
+    template<typename T>
+    T read_input() {
+        T obj;
+        std::cin >> obj;
+        return obj;
+    }
+
+    constexpr int32_t factorial(int32_t value) {
+        int32_t result = 1;
+        while(value > 0) {
+            result *= value;
+            --value;
+        }
+        return result;
     }
 
     int main() {
-        std::vector<int32_t> v;
-        for(size_t i = 0; i < 9; i++) { // size 1000, capacity 1000
-            v.clear();                  // size 0   , capacity 1000
-            v = load_numbers(std::move(v)); // move assignment
-        }
+        std::cout << "Enter: ";
+        const auto n = read_input<int32_t>();
+        const auto fact = factorial(n);
+        std::cout << "Factorial: " << fact << std::endl; 
     }
 
 
-Return practises (GOOD)
-~~~~~~~~~~~~~~~~~~~~~~~
-
-* Avoid std::move in your return it will inhibit RVO (RVO is better than a move, since nothing happens)
-* Function return type must be the same as the type you are returning
+Example of optimization #3
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: cpp
 
-    foo make_foo() { foo x; return x; }
-    foo change_foo(foo x) { return x; }
-    foo change_foo(foo x, foo y) { return test ? move(x) : move(y); }
-    foo change_foo(foo x, foo y) { if (test) return x; else return y; }
+    #include <vector>
+    #include <limits>
+
+    int range(std::vector<int>& values)  {
+        int min = std::numeric_limits<int>::max();
+        int max = std::numeric_limits<int>::min();
+
+        for(int i = 0; i < values.size(); i++) {
+            if(values[i] < min) { min = values[i]; }
+            if(values[i] > max) { max = values[i]; } 
+        }
+
+        return max - min;
+    }
+
+
+A more cleaner way to do it:
+
+.. code-block:: cpp
+
+    #include <algorithm>
+
+    template<typename Itr>
+    auto range(const Itr begin, const Itr end) {
+        const auto [min_elem, max_elem] = std::minmax_element(begin, end);
+        return *max_elem - *min_elem;
+    }
 

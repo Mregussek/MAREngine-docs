@@ -82,114 +82,114 @@ Optimized way to do == operator:
     }
 
 
-Example of optimization
+Slowpatch removal
+-----------------
+
+Avoid this:
+
+.. code-block:: cpp
+
+    if(checkForErrorA()) { handleErrorA(); }
+    else if(checkForErrorB()) { handleErrorB(); }
+    else if(checkForErrorC()) { handleErrorC(); }
+    else { doSomething(); }
+
+
+Aim for this:
+
+.. code-block:: cpp
+
+    int64_t errorFlags;
+
+    if(!errorFlags) { doSomething(); }
+    else { handleError(); }
+
+
+Prefer templates to branches
+----------------------------
+
+Branching approach:
+
+.. code-block:: cpp
+
+    enum class Side { Buy, Sell };
+
+    void run(Side side) {
+        const float orderPrice = CalcPrice(side, fairValue, credit);
+        checkRiskLimit(side, orderPrice);
+        sendOrder(side, orderPrice);
+    }
+
+    float calcPrice(Side side, float value, float credit) {
+        return side == Side::Buy ? value - credit : value + credit;
+    }
+
+
+Templated approach:
+
+.. code-block:: cpp
+
+    template<Side T>
+    void Strategy<T>::run() {
+        const float orderPrice = CalcPrice(side, fairValue, credit);
+        checkRiskLimit(side, orderPrice);
+        sendOrder(side, orderPrice);
+    }
+
+    template<>
+    float Strategy<Side::Buy>::calcPrice(float value, float credit) {
+        return value - credit;
+    }
+
+    template<>
+    float Strategy<Side::Sell>::calcPrice(float value, float credit) {
+        return value + credit;
+    }
+
+
+But don't remove every if, because it will end up to slow down the code.
+
+
+Passing arguments
+-----------------
+
+* Pass simple things by value
+    * Built in types (size_t, uint32_t, float)
+    * Maybe your simple types (16 bytes)
+    * But remember, you are making a copy
+* Pass things by value when you need to modify a copy
+    * There is no point in taking a const& parameter, if you are immediately going to make a copy anyway
+* Do not pass object by non-const reference, it makes it more clear for the reader what is happening if you use pointer.
+
+Examples:
+
+.. code-block:: cpp
+
+    std::vector<int32_t> load_numbers(std::vector<int32_t>&& v) {
+        // no constructor! size 0, capacity 1000
+        for(int32_t i = 1; i <= 1000; i++) { v.push_back(i); } // 0 allocations!
+        return v; // copy constructor
+    }
+
+    int main() {
+        std::vector<int32_t> v;
+        for(size_t i = 0; i < 9; i++) { // size 1000, capacity 1000
+            v.clear();                  // size 0   , capacity 1000
+            v = load_numbers(std::move(v)); // move assignment
+        }
+    }
+
+
+Return practises (GOOD)
 -----------------------
 
-.. code-block:: cpp
-
-    #include <iostream>
-    using namespace std;
-
-    int main() {
-        int length;
-        string greet1 = "Hello";
-        string greet2 = ", World!";
-        string greet3 = greet1 + greet2;
-
-        length = greet3.size();
-    }
+* Avoid std::move in your return it will inhibit RVO (RVO is better than a move, since nothing happens)
+* Function return type must be the same as the type you are returning
 
 .. code-block:: cpp
 
-    #include <string>
-
-    int main() {
-        const std::string greet1 = "Hello";
-        const std::string greet2 = ", World!";
-        const auto greet3 = greet1 + greet2;
-        const auto length = greet3.size();
-        return length;
-    }
-
-
-Example of optimization #2
---------------------------
-
-.. code-block:: cpp
-
-    #include <iostream>
-
-    int main() {
-        int i, n, fact = 1;
-        std::cout << "Enter: ";
-        std::cin >> n;
-        
-        for(i = 1; i <= n; i++) { fact *= i; }
-
-        std::cout << "Factorial: " << fact << std::endl; 
-    }
-
-
-Everything is calculated at compile-time below:
-
-.. code-block:: cpp
-
-    #include <iostream>
-
-    template<typename T>
-    T read_input() {
-        T obj;
-        std::cin >> obj;
-        return obj;
-    }
-
-    constexpr int32_t factorial(int32_t value) {
-        int32_t result = 1;
-        while(value > 0) {
-            result *= value;
-            --value;
-        }
-        return result;
-    }
-
-    int main() {
-        std::cout << "Enter: ";
-        const auto n = read_input<int32_t>();
-        const auto fact = factorial(n);
-        std::cout << "Factorial: " << fact << std::endl; 
-    }
-
-
-Example of optimization #3
---------------------------
-
-.. code-block:: cpp
-
-    #include <vector>
-    #include <limits>
-
-    int range(std::vector<int>& values)  {
-        int min = std::numeric_limits<int>::max();
-        int max = std::numeric_limits<int>::min();
-
-        for(int i = 0; i < values.size(); i++) {
-            if(values[i] < min) { min = values[i]; }
-            if(values[i] > max) { max = values[i]; } 
-        }
-
-        return max - min;
-    }
-
-
-A more cleaner way to do it:
-
-.. code-block:: cpp
-
-    #include <algorithm>
-
-    template<typename Itr>
-    auto range(const Itr begin, const Itr end) {
-        const auto [min_elem, max_elem] = std::minmax_element(begin, end);
-        return *max_elem - *min_elem;
-    }
+    foo make_foo() { foo x; return x; }
+    foo change_foo(foo x) { return x; }
+    foo change_foo(foo x, foo y) { return test ? move(x) : move(y); }
+    foo change_foo(foo x, foo y) { if (test) return x; else return y; }
 

@@ -38,7 +38,6 @@ The main documentation for the site is organized into the following sections:
    :name: sec-devel
 
    development/compiling
-   development/cpp
    development/file_formats
 
 

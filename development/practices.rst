@@ -16,7 +16,6 @@ Construction Separate From Assignment
     str = "Hello World";
     // work with str
 
-
 Faster solution:
 
 .. code-block:: cpp
@@ -24,7 +23,6 @@ Faster solution:
     // do some stuff
     const std::string str = "Hello World";
     // work with str
-
 
 Raw Loops
 ---------
@@ -43,7 +41,6 @@ Raw Loops
         if(in_range) { process_more(values); }
     }
 
-
 Much cleaner way to do it:
 
 .. code-block:: cpp
@@ -58,7 +55,6 @@ Much cleaner way to do it:
         if(all_in_range) { process_more(values); }
     }
 
-
 Non-Cannonical Operators
 ------------------------
 
@@ -72,7 +68,6 @@ Non-Cannonical Operators
         }
     };
 
-
 Optimized way to do == operator:
 
 .. code-block:: cpp
@@ -80,7 +75,6 @@ Optimized way to do == operator:
     bool operator==(const Vec2& rhs) const { 
         return x == rhs.x && y == rhs.y;
     }
-
 
 Slowpatch removal
 -----------------
@@ -94,7 +88,6 @@ Avoid this:
     else if(checkForErrorC()) { handleErrorC(); }
     else { doSomething(); }
 
-
 Aim for this:
 
 .. code-block:: cpp
@@ -103,7 +96,6 @@ Aim for this:
 
     if(!errorFlags) { doSomething(); }
     else { handleError(); }
-
 
 Prefer templates to branches
 ----------------------------
@@ -123,7 +115,6 @@ Branching approach:
     float calcPrice(Side side, float value, float credit) {
         return side == Side::Buy ? value - credit : value + credit;
     }
-
 
 Templated approach:
 
@@ -146,9 +137,7 @@ Templated approach:
         return value + credit;
     }
 
-
 But don't remove every if, because it will end up to slow down the code.
-
 
 Passing arguments
 -----------------
@@ -178,7 +167,6 @@ Examples:
             v = load_numbers(std::move(v)); // move assignment
         }
     }
-
 
 Return practises (GOOD)
 -----------------------

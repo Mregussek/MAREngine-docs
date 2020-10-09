@@ -3,12 +3,11 @@ Optimizations
 
 .. seealso::
 
-    This page describes the C++ some optimizations used in MAREngine. It makes code a bit cleaner.
+    This page describes how C++ works, some mandatory knowledge for developers. I encourage you to read this content.
 
 
 Variables
 ---------
-
 
 Stack
 ~~~~~
@@ -24,8 +23,7 @@ The advantage of static data is that it can be initialized to desired values bef
 Heap Allocations
 ~~~~~~~~~~~~~~~~
 
-* Heap allocations are the most expensive things we
-commonly do
+* Heap allocations are the most expensive things we commonly do
 * Deallocations are the second most expensive
 * So reduce them as much as possible, ideally to zero
     * Count your allocations
@@ -43,10 +41,8 @@ Enums
 
 An enum is simply an integer in disguise. Enums are exactly as efficient as integers
 
-
 Functions
 ---------
-
 
 The function call makes the microprocessor jump to a different code address and back again. This may take up to 4 clock cycles. In most cases the microprocessor is able to overlap the call and return operations with other calculations to save time.
 
@@ -67,7 +63,6 @@ Use templates instead of macros
         return a > b ? a : b;   // calculated once, when passing argument
     }
 
-
 Use fastcall and vectorcall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -81,10 +76,8 @@ A function that is used only within the same module (i.e. the current .cpp file)
     * Add the keyword static to the function declaration. This is the simplest method, but it does not work with class member functions, where static has a different meaning.
     * Put the function or class into an anonymous namespace.
 
-
 Classes
 -------
-
 
 Data Allignment
 ~~~~~~~~~~~~~~~
@@ -106,7 +99,6 @@ Data Allignment
                         // 2 unused bytes
     };
 
-
 This reordering has made the structure 8 bytes smaller and the array 800 bytes smaller.
 
 Virtual member functions
@@ -115,7 +107,6 @@ Virtual member functions
 Each instance of a polymorphic class has a pointer to a table of pointers to the different versions of the virtual functions. This so-called virtual table is used for finding the right version of the virtual function at runtime.
 Polymorphism is one of the main reasons why object oriented programs can be less efficient than non-object oriented programs. If you can avoid virtual functions then you can obtain most of the advantages of object oriented programming without paying the performance costs.
 The time it takes to call a virtual member function is a few clock cycles more than it takes to call a non-virtual member function, provided that the function call statement always calls the same version of the virtual function. If the version changes then you may get a misprediction penalty of 10 - 20 clock cycles.
-
 
 Some examples of optimizations
 ------------------------------
@@ -149,7 +140,6 @@ Example of optimization
         return length;
     }
 
-
 Example of optimization #2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -166,7 +156,6 @@ Example of optimization #2
 
         std::cout << "Factorial: " << fact << std::endl; 
     }
-
 
 Everything is calculated at compile-time below:
 
@@ -197,7 +186,6 @@ Everything is calculated at compile-time below:
         std::cout << "Factorial: " << fact << std::endl; 
     }
 
-
 Example of optimization #3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -217,7 +205,6 @@ Example of optimization #3
 
         return max - min;
     }
-
 
 A more cleaner way to do it:
 

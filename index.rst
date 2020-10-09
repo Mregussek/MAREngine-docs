@@ -8,7 +8,7 @@ Welcome to MAREngine's documentation!
    in the top left corner.
 
 
-Welcome to the official documentation of `Godot Engine <https://github.com/mregussek/MAREngine>`__,
+Welcome to the official documentation of `MAREngine <https://github.com/mregussek/MAREngine>`__,
 the educational 3D game engine written in modern C++! If you are new to this documentation, I recommend that you read the
 `introduction page <https://marengine-docs.readthedocs.io/en/latest/general/introduction.html>`__ to get an overview of what this documentation has to offer.
 

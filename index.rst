@@ -1,9 +1,16 @@
 Welcome to MAREngine's documentation!
 ==========================================
 
-The table of contents below and in the sidebar should let you easily access the
-documentation for your topic of interest. You can also use the search function
-in the top left corner.
+  .. attention:: 
+   
+   The table of contents below and in the sidebar should let you easily access the
+   documentation for your topic of interest. You can also use the search function
+   in the top left corner.
+
+
+Welcome to the official documentation of `Godot Engine <https://github.com/mregussek/MAREngine>`__,
+the educational 3D game engine written in modern C++! If you are new to this documentation, I recommend that you read the
+`introduction page <https://marengine-docs.readthedocs.io/en/latest/general/introduction.html>`__ to get an overview of what this documentation has to offer.
 
 The main documentation for the site is organized into the following sections:
 
@@ -12,7 +19,7 @@ The main documentation for the site is organized into the following sections:
    :caption: General
    :name: sec-general
 
-   general/about
+   general/introduction
 
 
 .. toctree::
@@ -37,8 +44,12 @@ The main documentation for the site is organized into the following sections:
    :caption: Development
    :name: sec-devel
 
+   development/architecture
    development/compiling
    development/file_formats
+   development/standards
+   development/practices
+   development/optimizations
 
 
 .. toctree::
@@ -47,13 +58,4 @@ The main documentation for the site is organized into the following sections:
    :name: sec-community
 
    community/contributing
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Community
-   :name: sec-community
-
-   coding_standards/standards 
-   coding_standards/practices 
-   coding_standards/optimizations
+   

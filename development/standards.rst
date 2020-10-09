@@ -198,6 +198,26 @@ It is better to it this way:
         double b{ 0.0 };
     };
 
+Namespaces
+----------
+
+Increase readability with nested namespaces
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: cpp
+
+    // This is considered as bad
+    namespace first {
+        namespace second {
+            class SomeClass;
+        }
+    }
+
+    // This one definitely increase readability
+    namespace first::second {
+        class SomeClass;
+    }
+
 Header Files
 ------------
 

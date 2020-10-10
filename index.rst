@@ -65,13 +65,4 @@ The main documentation for the site is organized into the following sections:
    :name: sec-references
 
    references/references
-   references/namespaces/mar
-   references/namespaces/debug
-   references/namespaces/ecs
-   references/namespaces/editor
-   references/namespaces/graphics
-   references/namespaces/layers
-   references/namespaces/platforms
-   references/namespaces/scripting
-   references/namespaces/window
    

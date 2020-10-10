@@ -3,20 +3,22 @@ References
 
 .. attention:: 
 
-    This site contains documentation for every namespace, class and method. You can learn everything from here, study stuff.
+    This site contains documentation for namespace, class and method. You can learn everything from here, study stuff.
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Namespaces
    :name: sec-namespaces
 
-   namespaces/mar
-   namespaces/debug
-   namespaces/ecs
-   namespaces/editor
-   namespaces/graphics
-   namespaces/layers
-   namespaces/platforms
-   namespaces/scripting
-   namespaces/window
+   namespaces/namespaces
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Classes
+   :name: sec-classes
+
+   classes-ecs/classes-ecs
+   classes-graphics/classes-graphics
+   classes-scripting/classes-scripting

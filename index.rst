@@ -1,7 +1,7 @@
 Welcome to MAREngine's documentation!
-==========================================
+=====================================
 
-  .. attention:: 
+.. attention:: 
    
    The table of contents below and in the sidebar should let you easily access the
    documentation for your topic of interest. You can also use the search function
@@ -58,4 +58,20 @@ The main documentation for the site is organized into the following sections:
    :name: sec-community
 
    community/contributing
+
+.. toctree::
+   :maxdepth: 3
+   :caption: References
+   :name: sec-references
+
+   references/references
+   references/namespaces/mar
+   references/namespaces/debug
+   references/namespaces/ecs
+   references/namespaces/editor
+   references/namespaces/graphics
+   references/namespaces/layers
+   references/namespaces/platforms
+   references/namespaces/scripting
+   references/namespaces/window
    

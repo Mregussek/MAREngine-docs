@@ -198,6 +198,12 @@ It is better to it this way:
         double b{ 0.0 };
     };
 
+Do not use virtual destructor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Remember that move construction and move assignment are disabled if you use virtual destructor!
+Use it wisely.
+
 Namespaces
 ----------
 

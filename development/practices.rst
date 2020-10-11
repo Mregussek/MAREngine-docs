@@ -97,6 +97,42 @@ Aim for this:
     if(!errorFlags) { doSomething(); }
     else { handleError(); }
 
+Use IIFE
+--------
+
+.. code-block:: cpp
+
+    const int32_t i = std::rand();
+    std::string s;
+    switch(i % 2) {
+    case 0: 
+        s = "mod 0"; 
+        break;
+    case 1: 
+        s = "mod 1"; 
+        break;
+    case 2: 
+        s = "mod 2"; 
+        break;
+    }
+
+The IIFE acronym stands for “Immediately-invoked function expression”. It is ~31% more efficient than example above.
+
+.. code-block:: cpp
+
+    const int32_t i = std::rand();
+    const std::string s = [i]() {
+        switch(i % 2) {
+        case 0: 
+            return "mod 0"; 
+        case 1: 
+            return "mod 1"; 
+        case 2: 
+            return "mod 2"; 
+        }
+    };
+
+
 Prefer templates to branches
 ----------------------------
 
@@ -139,6 +175,51 @@ Templated approach:
 
 But don't remove every if, because it will end up to slow down the code.
 
+Prefer return std::unique_ptr<>
+-------------------------------
+
+std::shared_ptr<> is a huge beast, try to avoid it every time.
+
+.. code-block:: cpp
+
+    template<typename T> std::unique_ptr<BaseClass> d_factory() {
+        return std::make_unique<DerivedClass<T>>();
+    }
+
+1.30s compile, 30k exe, 149796k compile RAM
+
+.. code-block:: cpp
+
+    template<typename T> std::shared_ptr<BaseClass> d_factory() {
+        return std::make_shared<DerivedClass<T>>();
+    }
+
+2.24s compile, 70k exe, 164808k compile RAM
+
+.. code-block:: cpp
+
+    template<typename T> std::shared_ptr<BaseClass> d_factory() {
+        return std::make_unique<DerivedClass<T>>();
+    }
+
+2.43s compile, 91k exe, 190044k compile RAM
+
+Avoid std::endl
+---------------
+
+.. code-block:: cpp
+
+    void print(std::ostream& os, const std::string& str) {
+        // Those 2 lines below are exactly the same!
+        os << str << std::endl; 
+        os << str << "\n" << std::flush;
+
+        // Use just "\n"
+        os << str << "\n";
+    }
+
+You can expect that flush can cost you at least 9x overhead in your IO.
+
 Passing arguments
 -----------------
 
@@ -178,6 +259,37 @@ Return practises (GOOD)
 
     foo make_foo() { foo x; return x; }
     foo change_foo(foo x) { return x; }
-    foo change_foo(foo x, foo y) { return test ? move(x) : move(y); }
+    foo change_foo(foo x, foo y) { return test ? std::move(x) : std::move(y); }
     foo change_foo(foo x, foo y) { if (test) return x; else return y; }
 
+Avoid copying if it is not neccessary
+-------------------------------------
+
+.. code-block:: cpp
+
+    struct S {
+        S(std::string arg_s) : m_s(arg_s) {}
+        std::string m_s;
+    }
+
+    int main() {
+        for(size_t i = 0; i < 100000; i++) {
+            std::string s = std::string("short string: ") + "b";
+            S o(s);
+        }
+    }
+
+Example below is more efficient:
+
+.. code-block:: cpp
+
+    struct S {
+        S(std::string arg_s) : m_s(std::move(arg_s)) {}
+        std::string m_s;
+    }
+
+    int main() {
+        for(size_t i = 0; i < 100000; i++) {
+            S o(std::string("short string: ") + "b");
+        }
+    }

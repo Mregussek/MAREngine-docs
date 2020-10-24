@@ -38,8 +38,8 @@ Members
 
 .. _class_member_SceneRegistry_m_registry:
 
-+-----------------------------------------------+---------------------+
-| :ref:`entt::registry<class_entt_registry>`    | m_registry          |
-+-----------------------------------------------+---------------------+
++----------------------------------------------------------------+
+| :ref:`entt::registry<class_entt_registry>` m_registry          |
++----------------------------------------------------------------+
 
 m_registry description

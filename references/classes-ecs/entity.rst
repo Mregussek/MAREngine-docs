@@ -6,7 +6,7 @@ Entity
 
 Entity Description
 
-Entity has two friend classes: 
+Entity has two friend classes:
 
 * :ref:`mar::ecs::Scene<class_Scene>`
 * :ref:`mar::ecs::EntityCollection<class_EntityCollection>`
@@ -113,16 +113,16 @@ Members
 
 .. _class_member_Entity_m_entityHandle:
 
-+-----------------------------------------------+-------------------------+-------------------------+
-| :ref:`entt::entity<class_entt_entity>`        | m_entityHandle          | ``entt::null``          |
-+-----------------------------------------------+-------------------------+-------------------------+
++----------------------------------------------------------------+-------------------------+
+| :ref:`entt::entity<class_entt_entity>` m_entityHandle          | ``entt::null``          |
++----------------------------------------------------------------+-------------------------+
 
 m_entityHandle description
 
 .. _class_member_Entity_m_scene:
 
-+-----------------------------------------------+-------------------------+-------------------------+
-| :ref:`SceneRegistry*<class_SceneRegistry>`    | m_scene                 | ``nullptr``             |
-+-----------------------------------------------+-------------------------+-------------------------+
++--------------------------------------------------------------------+-------------------------+
+| :ref:`SceneRegistry*<class_SceneRegistry>` m_scene                 | ``nullptr``             |
++--------------------------------------------------------------------+-------------------------+
 
 m_scene description

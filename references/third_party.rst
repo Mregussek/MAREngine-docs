@@ -13,3 +13,11 @@ entt::registry
 
 entt::entity
 ~~~~~~~~~~~~
+
+MARMaths
+--------
+
+.. _class_marmaths_vec3:
+
+mar::maths::vec3
+~~~~~~~~~~~~~~~~

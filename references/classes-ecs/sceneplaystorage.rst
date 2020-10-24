@@ -60,23 +60,23 @@ description
 .. _class_method_ScenePlayStorage_pushOperation:
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
-| void pushOperation(:ref:`EntityStorage<nested_class_EntityStorage>` & storage, const :ref:`Entity<class_Entity>` & entity); |
+| void pushOperation(:ref:`EntityStorage<nested_class_EntityStorage>` & storage, const :ref:`Entity<class_Entity>` & entity);                          |
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 description
 
 .. _class_method_ScenePlayStorage_loadEntityFromStorage_private:
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
 | void loadEntityFromStorage(std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` >& vectorStorage, const :ref:`Entity<class_Entity>` & entity) |
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 description
 
 .. _class_method_ScenePlayStorage_loadOperation:
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
-| void loadOperation(const :ref:`EntityStorage<nested_class_EntityStorage>` & storage, const :ref:`Entity<class_Entity>` & entity) |
+| void loadOperation(const :ref:`EntityStorage<nested_class_EntityStorage>` & storage, const :ref:`Entity<class_Entity>` & entity)                     |
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 description
@@ -86,17 +86,17 @@ Members
 
 .. _class_member_ScenePlayStorage_m_entityStorage:
 
-+------------------------------------------------------------------+---------------------+
-| std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` >  | m_entityStorage     |
-+------------------------------------------------------------------+---------------------+
++-------------------------------------------------------------------------------------+
+| std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` > m_entityStorage     |
++-------------------------------------------------------------------------------------+
 
 description
 
-.. _class_member_ScenePlayStorage_m_entityStorage:
+.. _class_member_ScenePlayStorage_m_collectionStorage:
 
-+--------------------------------------------------------------------------+---------------------+
-| std::vector< :ref:`CollectionStorage<nested_class_CollectionStorage>` >  | m_collectionStorage |
-+--------------------------------------------------------------------------+---------------------+
++---------------------------------------------------------------------------------------------+
+| std::vector< :ref:`CollectionStorage<nested_class_CollectionStorage>` > m_collectionStorage |
++---------------------------------------------------------------------------------------------+
 
 description
 
@@ -115,25 +115,25 @@ Members
 
 .. _class_member_EntityStorage_transform:
 
-+-------------------------------------------------------------+---------------------+
-| :ref:`TransformComponent<class_TransformComponent>`         | transform           |
-+-------------------------------------------------------------+---------------------+
++-------------------------------------------------------------------------+
+| :ref:`TransformComponent<class_TransformComponent>` transform           |
++-------------------------------------------------------------------------+
 
 description
 
 .. _class_member_EntityStorage_light:
 
-+-----------------------------------------------------+---------------------+
-| :ref:`LightComponent<class_LightComponent>`         | light               |
-+-----------------------------------------------------+---------------------+
++-----------------------------------------------------------------+
+| :ref:`LightComponent<class_LightComponent>` light               |
++-----------------------------------------------------------------+
 
 description
 
 .. _class_member_EntityStorage_color:
 
-+-----------------------------------------------------+---------------------+
-| :ref:`ColorComponent<class_ColorComponent>`         | color               |
-+-----------------------------------------------------+---------------------+
++-----------------------------------------------------------------+
+| :ref:`ColorComponent<class_ColorComponent>` color               |
++-----------------------------------------------------------------+
 
 description
 
@@ -160,8 +160,8 @@ Members
 
 .. _class_member_CollectionStorage_entities:
 
-+-------------------------------------------------------------------------+---------------------+
-| std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` >         | entities            |
-+-------------------------------------------------------------------------+---------------------+
++-------------------------------------------------------------------------------------+
+| std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` > entities            |
++-------------------------------------------------------------------------------------+
 
 description

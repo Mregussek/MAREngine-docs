@@ -15,10 +15,18 @@ References
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Classes
    :name: sec-classes
 
    classes-ecs/classes-ecs
    classes-graphics/classes-graphics
    classes-scripting/classes-scripting
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 3rd_party libs
+   :name: sec-third-party-libs
+
+   third_party

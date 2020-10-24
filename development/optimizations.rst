@@ -217,4 +217,3 @@ A more cleaner way to do it:
         const auto [min_elem, max_elem] = std::minmax_element(begin, end);
         return *max_elem - *min_elem;
     }
-

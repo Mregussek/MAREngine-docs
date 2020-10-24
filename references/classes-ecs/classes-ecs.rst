@@ -7,16 +7,16 @@ Classes at mar::ecs Reference
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Classes at mar::ecs
    :name: sec-classes-mar-ecs
-
-    components
-    entity
-    entitycollection
-    scene
-    sceneevents
-    scenemanager
-    sceneregistry
-    scenestorage
+   
+   components
+   entity
+   entitycollection
+   scene
+   sceneevents
+   scenemanager
+   sceneregistry
+   scenestorage
 

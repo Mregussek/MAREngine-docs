@@ -35,7 +35,7 @@ ScriptComponent
 ~~~~~~~~~~~~~~~
 
 Texture Components
------------------
+------------------
 
 ColorComponent
 ~~~~~~~~~~~~~~
@@ -51,6 +51,13 @@ Engine Only Components
 
 Components
 ~~~~~~~~~~
+
+.. _class_EntityComponents:
+
+EntityComponents
+````````````````
+
+EntityComponents class description
 
 RenderPipelineComponent
 ~~~~~~~~~~~~~~~~~~~~~~~

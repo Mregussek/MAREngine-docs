@@ -11,11 +11,11 @@ Classes at mar::graphics Reference
    :caption: Classes at mar::graphics
    :name: sec-classes-mar-graphics
 
-    meshcreator
-    rendercamera
-    rendercontainer
-    rendererbatch
-    renderpipeline
-    renderstatistics
-    shapemanipulator
+   meshcreator
+   rendercamera
+   rendercontainer
+   rendererbatch
+   renderpipeline
+   renderstatistics
+   shapemanipulator
 

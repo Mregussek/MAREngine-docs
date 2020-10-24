@@ -11,7 +11,7 @@ Classes at mar::scripting Reference
    :caption: Classes at mar::scripting
    :name: sec-classes-mar-scripting
 
-    marenginepy
-    marenginepytrampoline
-    pythonscript
+   marenginepy
+   marenginepytrampoline
+   pythonscript
 

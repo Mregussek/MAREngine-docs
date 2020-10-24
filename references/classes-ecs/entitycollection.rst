@@ -3,8 +3,8 @@
 EntityCollection
 ================
 
-Methods
--------
+Public Methods
+--------------
 
 .. _class_method_EntityCollection_destroyYourself:
 

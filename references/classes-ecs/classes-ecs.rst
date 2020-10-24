@@ -1,7 +1,7 @@
 Classes at mar::ecs Reference
 =============================
 
-.. attention:: 
+.. attention::
 
     This site contains documentation for every class in mar::ecs namespace.
 
@@ -14,9 +14,11 @@ Classes at mar::ecs Reference
    components
    entity
    entitycollection
+   entityoperation
+   entitycontainer
    scene
    sceneevents
    scenemanager
    sceneregistry
-   scenestorage
+   sceneplaystorage
 

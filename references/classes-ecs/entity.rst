@@ -22,8 +22,8 @@ Constructors / Descructors
 
 This is default constructor for :ref:`Entity class<class_Entity>`, because we need to initialize :ref:`m_scene member<class_member_Entity_m_scene>`.
 
-Methods
--------
+Public Methods
+--------------
 
 .. _class_method_Entity_destroyYourself:
 

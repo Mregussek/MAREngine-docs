@@ -14,18 +14,18 @@ Entity has two friend classes:
 Constructors / Descructors
 --------------------------
 
-.. _class_constructor_entity_scene_registry:
+.. _class_constructor_Entity_scene_registry:
 
 +-----------------------------------------------+
 | Entity(SceneRegistry* scene)                  |
 +-----------------------------------------------+
 
-This is default constructor for :ref:`Entity class<class_Entity>`, because we need to initialize :ref:`m_scene member<class_member_entity_m_scene>`.
+This is default constructor for :ref:`Entity class<class_Entity>`, because we need to initialize :ref:`m_scene member<class_member_Entity_m_scene>`.
 
 Methods
 -------
 
-.. _class_method_entity_destroyYourself:
+.. _class_method_Entity_destroyYourself:
 
 +-----------------------------------------------+
 | void destroyYourself() const                  |
@@ -33,7 +33,7 @@ Methods
 
 destroyYourself description
 
-.. _class_method_entity_addDefault:
+.. _class_method_Entity_addDefault:
 
 +-----------------------------------------------+
 | void addDefault() const                       |
@@ -41,7 +41,7 @@ destroyYourself description
 
 addDefault description
 
-.. _class_method_entity_copyDefault:
+.. _class_method_Entity_copyDefault:
 
 +---------------------------------------------------------------------+
 | void copyDefault(const :ref:`Entity<class_Entity>` & other) const   |
@@ -49,7 +49,7 @@ addDefault description
 
 copyDefault description
 
-.. _class_method_entity_isValid:
+.. _class_method_Entity_isValid:
 
 +-----------------------------------------------+
 | const bool isValid() const                    |
@@ -57,7 +57,7 @@ copyDefault description
 
 isValid description
 
-.. _class_method_entity_hasComponent:
+.. _class_method_Entity_hasComponent:
 
 +---------------------------------------------------------+
 | template<typename T> const bool hasComponent() const    |
@@ -65,7 +65,7 @@ isValid description
 
 hasComponent description
 
-.. _class_method_entity_addComponent:
+.. _class_method_Entity_addComponent:
 
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 | template<typename T, typename... Args> T& addComponent(:ref:`EntityComponents<class_EntityComponents>` entcmp, Args&&... args) const      |
@@ -73,7 +73,7 @@ hasComponent description
 
 addComponent description
 
-.. _class_method_entity_getComponent:
+.. _class_method_Entity_getComponent:
 
 +-----------------------------------------------------------------------------------------------------------+
 | template<typename T> T& getComponent() const                                                              |
@@ -81,7 +81,7 @@ addComponent description
 
 getComponent description
 
-.. _class_method_entity_replaceComponent:
+.. _class_method_Entity_replaceComponent:
 
 +------------------------------------------------------------------------------------------------------------+
 | template<typename T> T& replaceComponent(const :ref:`Entity<class_Entity>` & other) const                  |
@@ -89,7 +89,7 @@ getComponent description
 
 replaceComponent description
 
-.. _class_method_entity_removeComponent:
+.. _class_method_Entity_removeComponent:
 
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 | template<typename T> void removeComponent(:ref:`EntityComponents<class_EntityComponents>` entcmp) const                                   |
@@ -100,7 +100,7 @@ removeComponents description
 Operators
 ---------
 
-.. _class_operator_entity_bool:
+.. _class_operator_Entity_bool:
 
 +-----------------------------------------------------------------------------------------------------------+
 | operator const bool() const                                                                               |
@@ -111,7 +111,7 @@ description
 Members
 -------
 
-.. _class_member_entity_m_entityHandle:
+.. _class_member_Entity_m_entityHandle:
 
 +-----------------------------------------------+-------------------------+-------------------------+
 | :ref:`entt::entity<class_entt_entity>`        | m_entityHandle          | ``entt::null``          |
@@ -119,7 +119,7 @@ Members
 
 m_entityHandle description
 
-.. _class_member_entity_m_scene:
+.. _class_member_Entity_m_scene:
 
 +-----------------------------------------------+-------------------------+-------------------------+
 | :ref:`SceneRegistry*<class_SceneRegistry>`    | m_scene                 | ``nullptr``             |

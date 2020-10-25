@@ -3,7 +3,9 @@
 SceneRegistry
 =============
 
-Description
+A SceneRegistry can store and manage entities, as well as create views and groups to iterate the underlying data structures. It is used both to construct and 
+to destroy entities. SceneRegistry is just abstraction for :ref:`entt::registry<class_entt_registry>` , because I have found a lot of linker errors with using just
+:ref:`m_registry<class_member_SceneRegistry_m_registry>` member. Now it is used as a member only by :ref:`mar::ecs::Scene<class_Scene>` .
 
 SceneRegistry has three friend classes: 
 
@@ -31,7 +33,7 @@ Public Methods
 | void cleanup()                                |
 +-----------------------------------------------+
 
-cleanup description
+Method destroys all created entities in a registry at once.
 
 Members
 -------
@@ -42,4 +44,5 @@ Members
 | :ref:`entt::registry<class_entt_registry>` m_registry          |
 +----------------------------------------------------------------+
 
-m_registry description
+``m_registry`` is a core for Entity-Component System. With this we can instantiate all entities, destroy them, attach components and so on. Please read about 
+this :ref:`here<class_entt_registry>` .

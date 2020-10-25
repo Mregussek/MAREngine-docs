@@ -3,6 +3,8 @@
 Scene
 =====
 
+Scene is some kind of game itself. It has information about all entities and collections, can create all new entities and destroy them.
+
 Scene has two friend classes: 
 
 * :ref:`mar::ecs::Entity<class_Entity>`
@@ -17,6 +19,8 @@ Constructors / Destructors
 | Scene(std::string name)                |
 +----------------------------------------+
 
+It is default constructor for Scene class, it assigns scene's name and creates new :ref:`SceneRegistry<class_SceneRegistry>` .
+
 Static Public Methods
 ---------------------
 
@@ -26,7 +30,7 @@ Static Public Methods
 | static :ref:`mar::ecs::Scene<class_Scene>` * createEmptyScene(std::string name)                |
 +------------------------------------------------------------------------------------------------+
 
-createEmptyScene description
+Method for creating empty scene. Used, when new project, new game is being created. ``name`` argument is a new scene's name.
 
 Public Methods
 --------------
@@ -37,7 +41,7 @@ Public Methods
 | void shutdown()                |
 +--------------------------------+
 
-shutdown description
+Method is responsible for whole cleanup. It destroys all entities, all collections and registry itself.
 
 .. _class_method_Scene_createEntity:
 
@@ -45,7 +49,8 @@ shutdown description
 | const :ref:`mar::ecs::Entity<class_Entity>` & createEntity()                |
 +-----------------------------------------------------------------------------+
 
-createEntity
+Method's responsibility is to create new :ref:`mar::ecs::Entity<class_Entity>` instance and attach default components to it, which are 
+:ref:`TagComponent<class_TagComponent>`, :ref:`TransformComponent<class_TransformComponent>` and :ref:`EngineOnlyComponents<ecs_EngineOnlyComponent>`.
 
 .. _class_method_Scene_destroyEntity:
 
@@ -53,7 +58,7 @@ createEntity
 | void destroyEntity(int32_t index)                |
 +--------------------------------------------------+
 
-destroyEntity
+To be refactored...
 
 .. _class_method_Scene_createCollection:
 
@@ -61,7 +66,8 @@ destroyEntity
 | const :ref:`mar::ecs::EntityCollection<class_EntityCollection>` & createCollection()                |
 +-----------------------------------------------------------------------------------------------------+
 
-createCollection
+Method's responsibility is to create new :ref:`mar::ecs::EntityCollection<class_EntityCollection>` instance and attach default components to it, which are
+:ref:`TagComponent<class_TagComponent>`, :ref:`TransformComponent<class_TransformComponent>` and :ref:`EntityCollectionComponent><class_EntityCollectionComponent>`.
 
 .. _class_method_Scene_destroyCollection:
 
@@ -69,7 +75,7 @@ createCollection
 | void destroyCollection(int32_t index)                                                          |
 +------------------------------------------------------------------------------------------------+
 
-destroyCollection
+To be refactored...
 
 .. _class_method_Scene_destroyEntityAtCollection:
 
@@ -77,7 +83,7 @@ destroyCollection
 | void destroyEntityAtCollection(int32_t collection_index, int32_t entity_index)                 |
 +------------------------------------------------------------------------------------------------+
 
-destroyEntityAtCollection
+To be refactored...
 
 Setters
 -------
@@ -88,7 +94,7 @@ Setters
 | void setName(std::string name)                 |
 +------------------------------------------------+
 
-setName
+Method sets new scene name. Pass as a argument new name.
 
 .. _class_method_Scene_setBackground:
 
@@ -96,7 +102,7 @@ setName
 | void setBackground( :ref:`maths::vec3<class_marmaths_vec3>` v)      |
 +---------------------------------------------------------------------+
 
-setBackground
+Method sets new background color for scene. Pass as a argument new color.
 
 Getters
 -------
@@ -107,7 +113,7 @@ Getters
 | const std::string& getName() const            |
 +-----------------------------------------------+
 
-getName
+Method returns const reference to name. We don't want it to be modified with any other way than :ref:`setName<class_method_Scene_setName>` method.
 
 .. _class_method_Scene_getBackground:
 
@@ -115,7 +121,8 @@ getName
 | :ref:`maths::vec3<class_marmaths_vec3>` & getBackground()            |
 +----------------------------------------------------------------------+
 
-getBackground
+Method returns reference to background color. Non-const reference, because during editor mode we want to have ability to change its values with sliders.
+I think making copy and assigning it again is unnecessary.
 
 .. _class_method_Scene_getEntities:
 
@@ -123,7 +130,7 @@ getBackground
 | const std::vector< :ref:`mar::ecs::Entity<class_Entity>` >& getEntities() const            |
 +--------------------------------------------------------------------------------------------+
 
-getEntities
+Method returns const reference to vector of all entities, so that we can iterate every entity in our game.
 
 .. _class_method_Scene_getCollections:
 
@@ -131,7 +138,7 @@ getEntities
 | const std::vector< :ref:`mar::ecs::EntityCollection<class_EntityCollection>` >& getCollections() const            |
 +-------------------------------------------------------------------------------------------------------------------+
 
-getCollections
+Method returns const reference to vector of all collections, so that we can iterate every collection in our game.
 
 .. _class_method_Scene_getView:
 
@@ -139,7 +146,8 @@ getCollections
 | template<typename T> auto getView()            |
 +------------------------------------------------+
 
-getView
+I encourage you to read about :ref:`entt::view<class_entt_view>`, because it is the type returned from this method. We can iterate over all entities,
+that contains ``T`` component.
 
 .. _class_method_Scene_getComponent:
 
@@ -147,7 +155,8 @@ getView
 | template<typename T> T& getComponent(:ref:`entt::entity<class_entt_entity>` entity)           |
 +-----------------------------------------------------------------------------------------------+
 
-getComponent
+In order to iterate over entities in view, I have created method for passing :ref:`entt::entity<class_entt_entity>` as a argument, so that we can 
+get ``T`` component.
 
 Members
 -------
@@ -158,7 +167,7 @@ Members
 | std::string m_name                 | ``"Empty Scene"``       |
 +------------------------------------+-------------------------+
 
-m_name description
+m_name is a scene name variable.
 
 .. _class_member_Scene_m_sceneRegistry:
 
@@ -166,7 +175,7 @@ m_name description
 | :ref:`SceneRegistry<class_SceneRegistry>` m_sceneRegistry         |
 +-------------------------------------------------------------------+
 
-m_sceneRegistry description
+m_sceneRegistry is a core for whole scene. I encourage you to read about SceneRegistry :ref:`here<class_SceneRegistry>` and :ref:`here<class_entt_registry>`.
 
 .. _class_member_Scene_m_container:
 
@@ -174,7 +183,7 @@ m_sceneRegistry description
 | :ref:`EntityContainer<class_EntityContainer>` m_container             |
 +-----------------------------------------------------------------------+
 
-m_container description
+m_container is container for all stored entities and collections in scene. You can read about it :ref:`here<class_EntityContainer>`.
 
 .. _class_member_Scene_m_sceneCamera:
 
@@ -182,7 +191,7 @@ m_container description
 | :ref:`graphics::RenderCamera<class_RenderCamera>` m_sceneCamera            |
 +----------------------------------------------------------------------------+
 
-m_sceneCamera description
+m_sceneCamera is a game camera for the scene.
 
 .. _class_member_Scene_m_backgroundColor:
 
@@ -190,4 +199,4 @@ m_sceneCamera description
 | :ref:`maths::vec3<class_marmaths_vec3>` m_backgroundColor       | ``{ 0.22f, 0.69f, 0.87f }``             |
 +-----------------------------------------------------------------+-----------------------------------------+
 
-m_backgroundColor description
+m_backgroundColor is a background color for scene.

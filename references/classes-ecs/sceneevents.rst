@@ -3,7 +3,20 @@
 SceneEvents
 ===========
 
-SceneEvents description
+SceneEvents is a abstraction layer for Event system during all Scene operations. Using this method we can update stuff during engine execution. There is one static member,
+which has to be called in order to execute event. Example:
+
+.. code-block:: cpp
+
+    auto& transform = entity.getComponent<TransformComponent>();
+    transform.center.x += 5.0f;
+    SceneEvents::Instance().onTransformUpdate(entity);
+
+
+.. warning:: 
+
+    All public methods with "on" at the beginning of its name are marked const, because they do not modify :ref:`s_instance<class_member_SceneEvents_s_instance>`.
+
 
 Static Public Methods
 ---------------------
@@ -14,7 +27,7 @@ Static Public Methods
 | static SceneEvents& Instance()                |
 +-----------------------------------------------+
 
-Instance description
+Returns reference to static member of SceneEvents class - :ref:`s_instance<class_member_SceneEvents_s_instance>` .
 
 Setters
 -------
@@ -25,7 +38,7 @@ Setters
 | void setSceneManager(:ref:`SceneManager*<class_SceneManager>` & manager)    |
 +-----------------------------------------------------------------------------+
 
-setSceneManager description
+Method sets :ref:`m_sceneManager<class_member_SceneEvents_m_sceneManager>` member.
 
 Public Methods
 --------------
@@ -39,7 +52,9 @@ Transform
 | void onTransformUpdate(const :ref:`Entity<class_Entity>` * e) const         |
 +-----------------------------------------------------------------------------+
 
-onTransformUpdate description
+Method should be called, when :ref:`TransformComponent<class_TransformComponent>` is updated, which means that if user called 
+:ref:`recalculate<class_method_TransformComponent_recalculate>` method or updated component in any other way. As argument should be
+passed pointer to entity, which component was updated.
 
 Renderable
 ~~~~~~~~~~
@@ -50,7 +65,7 @@ Renderable
 | void onRenderableAdd() const         |
 +--------------------------------------+
 
-onRenderableAdd description
+Method should be called if user added :ref:`RenderableComponent<class_RenderableComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onRenderableUpdate:
 
@@ -58,7 +73,8 @@ onRenderableAdd description
 | void onRenderableUpdate(const :ref:`Entity<class_Entity>` * e) const        |
 +-----------------------------------------------------------------------------+
 
-onRenderableUpdate description
+Method should be called if user updated :ref:`RenderableComponent<class_RenderableComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onRenderableRemove:
 
@@ -66,7 +82,7 @@ onRenderableUpdate description
 | void onRenderableRemove() const         |
 +-----------------------------------------+
 
-onRenderableRemove description
+Method should be called if user removed :ref:`RenderableComponent<class_RenderableComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 Camera
 ~~~~~~
@@ -77,7 +93,7 @@ Camera
 | void onCameraAdd() const             |
 +--------------------------------------+
 
-onCameraAdd description
+Method should be called if user added :ref:`CameraComponent<class_CameraComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onCameraUpdate:
 
@@ -85,7 +101,8 @@ onCameraAdd description
 | void onCameraUpdate(const :ref:`Entity<class_Entity>` * e) const            |
 +-----------------------------------------------------------------------------+
 
-onCameraUpdate description
+Method should be called if user updated :ref:`CameraComponent<class_CameraComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onCameraRemove:
 
@@ -93,7 +110,7 @@ onCameraUpdate description
 | void onCameraRemove() const             |
 +-----------------------------------------+
 
-onCameraRemove description
+Method should be called if user removed :ref:`CameraComponent<class_CameraComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 Color
 ~~~~~
@@ -104,7 +121,7 @@ Color
 | void onColorAdd() const              |
 +--------------------------------------+
 
-onColorAdd description
+Method should be called if user added :ref:`ColorComponent<class_ColorComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onColorUpdate:
 
@@ -112,7 +129,8 @@ onColorAdd description
 | void onColorUpdate(const :ref:`Entity<class_Entity>` * e) const             |
 +-----------------------------------------------------------------------------+
 
-onColorUpdate description
+Method should be called if user updated :ref:`CColorComponent<class_ColorComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onColorRemove:
 
@@ -120,7 +138,7 @@ onColorUpdate description
 | void onColorRemove() const              |
 +-----------------------------------------+
 
-onColorRemove description
+Method should be called if user removed :ref:`ColorComponent<class_ColorComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 Texture2D
 ~~~~~~~~~
@@ -131,7 +149,7 @@ Texture2D
 | void onTexture2DAdd() const          |
 +--------------------------------------+
 
-onTexture2DAdd description
+Method should be called if user added :ref:`Texture2DComponent<class_Texture2DComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onTexture2DUpdate:
 
@@ -139,7 +157,8 @@ onTexture2DAdd description
 | void onTexture2DUpdate(const :ref:`Entity<class_Entity>` * e) const         |
 +-----------------------------------------------------------------------------+
 
-onTexture2DUpdate description
+Method should be called if user updated :ref:`Texture2DComponent<class_Texture2DComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onTexture2DRemove:
 
@@ -147,7 +166,7 @@ onTexture2DUpdate description
 | void onTexture2DRemove() const          |
 +-----------------------------------------+
 
-onTexture2DRemove description
+Method should be called if user removed :ref:`Texture2DComponent<class_Texture2DComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 TextureCubemap
 ~~~~~~~~~~~~~~
@@ -158,7 +177,7 @@ TextureCubemap
 | void onTextureCubemapAdd() const     |
 +--------------------------------------+
 
-onTextureCubemapAdd description
+Method should be called if user added :ref:`TextureCubemapComponent<class_TextureCubemapComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onTextureCubemapUpdate:
 
@@ -166,7 +185,8 @@ onTextureCubemapAdd description
 | void onTextureCubemapUpdate(const :ref:`Entity<class_Entity>` * e) const    |
 +-----------------------------------------------------------------------------+
 
-onTextureCubemapUpdate description
+Method should be called if user updated :ref:`TextureCubemapComponent<class_TextureCubemapComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onTextureCubemapRemove:
 
@@ -174,7 +194,7 @@ onTextureCubemapUpdate description
 | void onTextureCubemapRemove() const     |
 +-----------------------------------------+
 
-onTextureCubemapRemove description
+Method should be called if user removed :ref:`TextureCubemapComponent<class_TextureCubemapComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 Light
 ~~~~~
@@ -185,7 +205,7 @@ Light
 | void onLightAdd() const              |
 +--------------------------------------+
 
-onLightAdd description
+Method should be called if user added :ref:`LightComponent<class_LightComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onLightUpdate:
 
@@ -193,7 +213,8 @@ onLightAdd description
 | void onLightUpdate(const :ref:`Entity<class_Entity>` * e) const             |
 +-----------------------------------------------------------------------------+
 
-onLightUpdate description
+Method should be called if user updated :ref:`LightComponent<class_LightComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onLightRemove:
 
@@ -201,7 +222,7 @@ onLightUpdate description
 | void onLightRemove() const              |
 +-----------------------------------------+
 
-onLightRemove description
+Method should be called if user removed :ref:`LightComponent<class_LightComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 Script
 ~~~~~~
@@ -212,7 +233,7 @@ Script
 | void onScriptAdd() const             |
 +--------------------------------------+
 
-onScriptAdd description
+Method should be called if user added :ref:`ScriptComponent<class_ScriptComponent>` to an :ref:`Entity<class_Entity>` instance.
 
 .. _class_method_SceneEvents_onScriptUpdate:
 
@@ -220,7 +241,8 @@ onScriptAdd description
 | void onScriptUpdate(const :ref:`Entity<class_Entity>` * e) const            |
 +-----------------------------------------------------------------------------+
 
-onScriptUpdate description
+Method should be called if user updated :ref:`ScriptComponent<class_ScriptComponent>` in an :ref:`Entity<class_Entity>` instance.
+As argument should be passed pointer to entity, which component was updated.
 
 .. _class_method_SceneEvents_onScriptRemove:
 
@@ -228,7 +250,7 @@ onScriptUpdate description
 | void onScriptRemove() const             |
 +-----------------------------------------+
 
-onScriptRemove description
+Method should be called if user removed :ref:`ScriptComponent<class_ScriptComponent>` from an :ref:`Entity<class_Entity>` instance.
 
 Other
 ~~~~~
@@ -239,7 +261,7 @@ Other
 | void onEntityCopy() const               |
 +-----------------------------------------+
 
-onEntityCopy description
+Method should be called, if user called :ref:`copyEntity<class_method_EntityOperation_copyEntity>` from :ref:`EntityOperation<class_EntityOperation>` class.
 
 .. _class_method_SceneEvents_onEntityRemove:
 
@@ -247,7 +269,7 @@ onEntityCopy description
 | void onEntityRemove() const             |
 +-----------------------------------------+
 
-onEntityRemove description
+Method should be called, when user has deleted some :ref:`Entity<class_Entity>` from scene.
 
 .. _class_method_SceneEvents_onCollectionTransformUpdate:
 
@@ -255,7 +277,8 @@ onEntityRemove description
 | void onCollectionTransformUpdate() const |
 +------------------------------------------+
 
-onCollectionTransformUpdate description
+Method should be called, when :ref:`TransformComponent<class_TransformComponent>` is updated in some :ref:`EntityCollection<class_EntityCollection>` instance, 
+which means that if user called  :ref:`recalculate<class_method_TransformComponent_recalculate>` method or updated component in any other way.
 
 .. _class_method_SceneEvents_onCollectionRemove:
 
@@ -263,7 +286,7 @@ onCollectionTransformUpdate description
 | void onCollectionRemove() const         |
 +-----------------------------------------+
 
-onCollectionRemove description
+Method should be called, when user has deleted :ref:`EntityCollection<class_EntityCollection>` from scene.
 
 .. _class_method_SceneEvents_onCollectionOBJloaded:
 
@@ -271,7 +294,8 @@ onCollectionRemove description
 | void onCollectionOBJloaded(const :ref:`EntityCollection<class_EntityCollection>` & collection) const             |
 +------------------------------------------------------------------------------------------------------------------+
 
-onCollectionOBJloaded description
+Method should be called, when user has loaded some external file into :ref:`EntityCollection<class_EntityCollection>` instance. As a argument
+should be passed ``collection`` that has been filled with that external data.
 
 Static Members
 --------------
@@ -282,7 +306,7 @@ Static Members
 | :ref:`static SceneEvents<class_SceneEvents>`  | s_instance              | ``nullptr``             |
 +-----------------------------------------------+-------------------------+-------------------------+
 
-s_instance description
+:ref:`SceneEvents<class_SceneEvents>` static instance, that allows user to call event from anywhere.
 
 Members
 -------
@@ -293,4 +317,5 @@ Members
 | :ref:`SceneManager*<class_SceneManager>`      | m_sceneManager          | ``nullptr``             |
 +-----------------------------------------------+-------------------------+-------------------------+
 
-m_sceneManager description
+``m_sceneManager`` is a pointer to :ref:`SceneManager<class_SceneManager>` , which allows user to manage scene during execution. This members methods are called in bodies of
+:ref:`SceneEvents<class_SceneEvents>` methods.

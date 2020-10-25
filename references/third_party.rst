@@ -14,6 +14,11 @@ entt::registry
 entt::entity
 ~~~~~~~~~~~~
 
+.. _class_entt_view:
+
+entt::view
+~~~~~~~~~~
+
 MARMaths
 --------
 

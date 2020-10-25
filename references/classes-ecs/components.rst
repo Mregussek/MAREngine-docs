@@ -28,6 +28,12 @@ CollectionRenderableComponent
 TransformComponent
 ~~~~~~~~~~~~~~~~~~
 
+.. _class_method_TransformComponent_recalculate:
+
++----------------------------+
+| void recalculate()         |
++----------------------------+
+
 .. _ecs_LightComponents:
 
 Light Components
@@ -83,19 +89,12 @@ TextureCubemapComponent
 Engine Only Components
 ----------------------
 
-.. _class_Components:
-
-Components
-~~~~~~~~~~
-
-.. _class_EntityComponents:
-
-EntityComponents
-````````````````
-
-EntityComponents class description
-
 .. _class_RenderPipelineComponent:
 
 RenderPipelineComponent
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _class_EntityCollectionComponent:
+
+EntityCollectionComponent
+~~~~~~~~~~~~~~~~~~~~~~~~~

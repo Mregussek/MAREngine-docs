@@ -4,7 +4,21 @@
 Entity
 ======
 
-Entity Description
+The entity is a general purpose object. It only consists of a unique id (uint32_t, which can found at :ref:`entt::entity<class_entt_entity>` ). Every entity is container, where some
+:ref:`components<ecs_Components>` can be attached. Entities are the base of all objects, that can be found in the scene.
+
+.. warning::
+
+    If Entity has no :ref:`RenderableComponent<class_RenderableComponent>` and some mesh component (one from :ref:`texture components<ecs_TextureComponents>`),
+    it cannot be rendered!
+
+.. _attention_Tag_Transform_DefaultComponents_Entity:
+
+.. attention::
+
+    By default every entity should have its :ref:`TagComponent<class_TagComponent>` and :ref:`TransformComponent<class_TransformComponent>`! So there is no need to check if
+    Entity has those components attached! Luck of them is considered as a huge error!
+
 
 Entity has two friend classes:
 
@@ -16,11 +30,12 @@ Constructors / Descructors
 
 .. _class_constructor_Entity_scene_registry:
 
-+-----------------------------------------------+
-| Entity(SceneRegistry* scene)                  |
-+-----------------------------------------------+
++------------------------------------------------------------------------------+
+| Entity( :ref:`SceneRegistry*<class_SceneRegistry>` * scene)                  |
++------------------------------------------------------------------------------+
 
-This is default constructor for :ref:`Entity class<class_Entity>`, because we need to initialize :ref:`m_scene member<class_member_Entity_m_scene>`.
+This is default constructor for :ref:`Entity class<class_Entity>`, because we need to initialize :ref:`m_scene member<class_member_Entity_m_scene>`! If :ref:`m_scene member<class_member_Entity_m_scene>`
+will stay as nullptr value, Entity instance will immedietaly crash. During this constructor call entity is created.
 
 Public Methods
 --------------
@@ -31,7 +46,7 @@ Public Methods
 | void destroyYourself() const                  |
 +-----------------------------------------------+
 
-destroyYourself description
+Method destroys Entity. Instance is not valid anymore. Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_addDefault:
 
@@ -39,7 +54,8 @@ destroyYourself description
 | void addDefault() const                       |
 +-----------------------------------------------+
 
-addDefault description
+Method adds default components to entity ( :ref:`EngineOnlyComponents<ecs_EngineOnlyComponent>` ). Without these components
+:ref:`RenderPipeline<class_RenderPipeline>` will not work. Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_copyDefault:
 
@@ -47,7 +63,8 @@ addDefault description
 | void copyDefault(const :ref:`Entity<class_Entity>` & other) const   |
 +---------------------------------------------------------------------+
 
-copyDefault description
+Method copies default components ( :ref:`EngineOnlyComponents<ecs_EngineOnlyComponent>` ) from ``other`` Entity to ``this`` Entity.
+Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_isValid:
 
@@ -55,7 +72,7 @@ copyDefault description
 | const bool isValid() const                    |
 +-----------------------------------------------+
 
-isValid description
+Method checks, if current Entity is valid (valid means, if entity is created). Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_hasComponent:
 
@@ -63,15 +80,16 @@ isValid description
 | template<typename T> const bool hasComponent() const    |
 +---------------------------------------------------------+
 
-hasComponent description
+Method returns true, if entity has component attached. It is templated method, where ``T`` stands for component. Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_addComponent:
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| template<typename T, typename... Args> T& addComponent(:ref:`EntityComponents<class_EntityComponents>` entcmp, Args&&... args) const      |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------+
+| template<typename T, typename... Args> T& addComponent(Args&&... args) const  |
++-------------------------------------------------------------------------------+
 
-addComponent description
+Method adds component to Entity object. ``T`` stands for selected component. Parameter pack ``Args`` stands for arguments with which component can be created, but practically always
+component is created without any addinational arguments. Method returns reference to newly created component. Method marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_getComponent:
 
@@ -79,7 +97,9 @@ addComponent description
 | template<typename T> T& getComponent() const                                                              |
 +-----------------------------------------------------------------------------------------------------------+
 
-getComponent description
+Method returns reference to component attached to Entity. Method does not check, if component is already attached, make sure to check it 
+with :ref:`hasComponent<class_method_Entity_hasComponent>` method! Exception is Tag and Transform, :ref:`check this<attention_Tag_Transform_DefaultComponents_Entity>` .
+Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_replaceComponent:
 
@@ -87,15 +107,16 @@ getComponent description
 | template<typename T> T& replaceComponent(const :ref:`Entity<class_Entity>` & other) const                  |
 +------------------------------------------------------------------------------------------------------------+
 
-replaceComponent description
+Method replaces current component of ``this`` entity instance with component of ``other`` entity. Method returns reference to newly created component.
+``T`` stands for selected component. Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_removeComponent:
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-| template<typename T> void removeComponent(:ref:`EntityComponents<class_EntityComponents>` entcmp) const                                   |
-+-------------------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------+
+| template<typename T> void removeComponent() const  |
++----------------------------------------------------+
 
-removeComponents description
+Method removes component from current Entity. ``T`` stands for component to delete. Marked const, as it does not modify Entity instance.
 
 Operators
 ---------
@@ -106,7 +127,7 @@ Operators
 | operator const bool() const                                                                               |
 +-----------------------------------------------------------------------------------------------------------+
 
-description
+Operator calls :ref:`isValid<class_method_Entity_isValid>` and returns its result.
 
 Members
 -------
@@ -117,7 +138,7 @@ Members
 | :ref:`entt::entity<class_entt_entity>` m_entityHandle          | ``entt::null``          |
 +----------------------------------------------------------------+-------------------------+
 
-m_entityHandle description
+``m_entityHandle`` is unique ID for this Entity instance. By default is ``entt::null``, which stands for not valid Entity.
 
 .. _class_member_Entity_m_scene:
 
@@ -125,4 +146,5 @@ m_entityHandle description
 | :ref:`SceneRegistry*<class_SceneRegistry>` m_scene                 | ``nullptr``             |
 +--------------------------------------------------------------------+-------------------------+
 
-m_scene description
+``m_scene`` is a pointer to :ref:`SceneRegistry<class_SceneRegistry>` instance. Using this pointer we can add, remove, remove and do other stuff with components.
+It is some sort of storage of every entity. By default it ``nullptr``. 

@@ -1,3 +1,6 @@
+
+.. _namespace_platforms:
+
 Platforms at mar::platforms Reference
 =====================================
 

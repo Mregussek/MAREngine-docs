@@ -8,14 +8,6 @@ References
 
 .. toctree::
    :maxdepth: 2
-   :caption: Namespaces
-   :name: sec-namespaces
-
-   namespaces/namespaces
-
-
-.. toctree::
-   :maxdepth: 2
    :caption: Classes
    :name: sec-classes
 
@@ -23,6 +15,10 @@ References
    classes-graphics/classes-graphics
    classes-scripting/classes-scripting
    classes-platforms/classes-platforms
+   classes-layers/classes-layers
+   classes-editor/classes-editor
+   classes-window/classes-window
+   classes-debug/classes-debug
 
 
 .. toctree::

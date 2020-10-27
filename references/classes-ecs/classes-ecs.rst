@@ -1,3 +1,6 @@
+
+.. _namespace_ecs:
+
 Classes at mar::ecs Reference
 =============================
 

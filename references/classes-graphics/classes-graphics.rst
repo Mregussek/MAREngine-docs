@@ -1,3 +1,6 @@
+
+.. _namespace_graphics:
+
 Classes at mar::graphics Reference
 ==================================
 

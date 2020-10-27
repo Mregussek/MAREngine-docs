@@ -13,11 +13,10 @@ Some requirements are fullfiled from public repositories, but some of them are j
 Repositories, that need to be cloned (if clone MAREngine with --recurse-submodules you will have them automatically):
 
 * `ImGuiColorTextEdit <https://github.com/BalazsJako/ImGuiColorTextEdit/tree/master>`__
-* `ImGuiFileDialog <https://github.com/BalazsJako/ImGuiColorTextEdit/tree/master>`__
+* `ImGui-Addons <https://github.com/gallickgunner/ImGui-Addons/tree/master>`__
 * `ImGuizmo <https://github.com/CedricGuillemet/ImGuizmo/tree/master>`__
 * `MARMaths <https://github.com/Mregussek/MARMaths/tree/master>`__
 * `OBJ-Loader <https://github.com/Mregussek/OBJ-Loader/tree/master>`__
-* `dirent <https://github.com/tronkko/dirent/tree/master>`__
 * `imgui (docking branch) <https://github.com/ocornut/imgui/tree/docking>`__
 * `pybind11 <https://github.com/pybind/pybind11/tree/master>`__
 * `spdlog <https://github.com/gabime/spdlog/tree/master>`__

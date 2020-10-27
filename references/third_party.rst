@@ -1,6 +1,8 @@
 References to 3rd_party libs
 ============================
 
+.. _3rdparty_entt:
+
 entt
 ----
 
@@ -18,6 +20,8 @@ entt::entity
 
 entt::view
 ~~~~~~~~~~
+
+.. _3rdparty_marmaths:
 
 MARMaths
 --------
@@ -46,4 +50,20 @@ mar::maths::mat4
 
 mar::maths::Trig
 ~~~~~~~~~~~~~~~~
+
+.. _3rdparty_pybind11:
+
+pybind11
+--------
+
+.. _class_pybind11_module:
+
+pybind11::module
+~~~~~~~~~~~~~~~~
+
+.. _class_pybind11_object:
+
+pybind11::object
+~~~~~~~~~~~~~~~~
+
 

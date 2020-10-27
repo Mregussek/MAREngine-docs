@@ -22,6 +22,7 @@ References
    classes-ecs/classes-ecs
    classes-graphics/classes-graphics
    classes-scripting/classes-scripting
+   classes-platforms/classes-platforms
 
 
 .. toctree::

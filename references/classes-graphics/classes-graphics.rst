@@ -17,5 +17,5 @@ Classes at mar::graphics Reference
    rendererbatch
    renderpipeline
    renderstatistics
-   shapemanipulator
+   vertex
 

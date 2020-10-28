@@ -44,8 +44,8 @@ The most important concepts
 Architecture Overview
 ~~~~~~~~~~~~~~~~~~~~~
 
-We have :ref:`Entity<class_Entity>`, general purpose object to which we can attach some :ref:`Components<ecs_Components>` . In other words, entity is something
-that lives during render loop, we can see all entities in Scene Hierarchy Panel in GUI Editor.
+We have :ref:`Entity<class_Entity>`, a general purpose object to which we can attach some :ref:`Components<ecs_Components>` . In other words, entity is something
+that lives during the render loop, we can see all entities in Scene Hierarchy Panel in GUI Editor.
 
 .. image:: img/entity_with_components.png
     :width: 667
@@ -57,24 +57,24 @@ Default components are always attached:
 * :ref:`TagComponent<class_TagComponent>` - entity name in GUI Editor
 * :ref:`TransformComponent<class_TransformComponent>` - entity transform, using this component we can adjust its position, rotation, etc. 
 
-Other components  can be added to the :ref:`Entity<class_Entity>` with its member methods. But only with ``Tag`` and ``Transform`` we cannot render anything into the screen. 
+Other components  can be added to the :ref:`Entity<class_Entity>` with its member methods. But using only ``Tag`` and ``Transform`` we cannot render anything onto the screen. 
 We have to add some renderable stuff, which in MAREngine is defined by :ref:`RenderableComponent<class_RenderableComponent>` . This component by default contains
 emmpty vector of vertices and indices. We can fill this data with :ref:`MeshCreator<class_MeshCreator>` class. But it is not the end. For proper rendering 
 we also need some material, currently MAREngine supports three components for that:
 
 * :ref:`ColorComponent<class_ColorComponent>` - just a color
-* :ref:`Texture2DComponent<class_Texture2DComponent>` - some image file ending with .jpg or .png
-* :ref:`TextureCubemapComponent<class_TextureCubemapComponent>` - some directory, which contains 6 images. 
+* :ref:`Texture2DComponent<class_Texture2DComponent>` - any image file ending with .jpg or .png
+* :ref:`TextureCubemapComponent<class_TextureCubemapComponent>` -  directory which contains 6 images. 
 
 .. attention::
 
-    If entity has :ref:`RenderableComponent<class_RenderableComponent>` and one of those three components above it can be rendered!
+     It can be rendered only if entity has :ref:`RenderableComponent<class_RenderableComponent>` and one of those three components above!
 
 
-Another living structure defined in MAREngine is :ref:`EntityCollection<class_EntityCollection>` . As the name says it can possess some entities, in other words it is container
-for several entities. To :ref:`EntityCollection<class_EntityCollection>` we can also attach some components. Like in :ref:`Entity<class_Entity>` , there are also added
-by default :ref:`TagComponent<class_TagComponent>` and :ref:`TransformComponent<class_TransformComponent>` .  More attention requires TransformComponent in EntityCollection.
-All entities has relative parameters to that EntityCollection's transform parameters!
+Another living structure defined in MAREngine is :ref:`EntityCollection<class_EntityCollection>` . As the name says it can possess some entities, in other words it is a container
+for several entities. We can also attach some components to :ref:`EntityCollection<class_EntityCollection>`. Like in :ref:`Entity<class_Entity>` , 
+ :ref:`TagComponent<class_TagComponent>` and :ref:`TransformComponent<class_TransformComponent>` are also added by default. More attention is required by TransformComponent  in EntityCollection.
+All entities have parameters relative to that EntityCollection's transform parameters!
 
 .. image:: img/entitycollection_with_components_entities.png
     :width: 1087
@@ -83,7 +83,7 @@ All entities has relative parameters to that EntityCollection's transform parame
 
 
 Ok, now we know that there are Entities and EntityCollections, but they can't be alone. Let's take a look at :ref:`Scene<class_Scene>` , which is a creator. One of its members,
-:ref:`SceneRegistry<class_SceneRegistry>` is a base for all the information about current scene. A SceneRegistry can store and manage entities (its unique IDs!). From Registry
+:ref:`SceneRegistry<class_SceneRegistry>` is a base for all the information about the current scene. A SceneRegistry can store and manage entities (its unique IDs!). From Registry
 we are able to see, if this entity is valid or not, if it has some component and do something with it. I like to say that, :ref:`Scene<class_Scene>` is some abstraction
 for that SceneRegistry, as we don't want to use pure methods that sometimes are hard to read. We can say it is a maker for the whole game, becauce Scene with its 
 member SceneRegistry has the power to create entities, destroy them and do some magical stuff.
@@ -97,9 +97,9 @@ member SceneRegistry has the power to create entities, destroy them and do some 
 
     Generally, :ref:`Scene<class_Scene>` contains all the entities and collections.
 
-Now we can take a look how rendering is working. :ref:`Scene<class_Scene>` has to have a manager or something, Scene itself cannot update information about
-entities, there must be some other way. For that reason there is created :ref:`SceneManager<class_SceneManager>` , which can push data to :ref:`RenderPipeline<class_RenderPipeline>` ,
-it can call ``update()`` method from :ref:`PythonScript<class_PythonScript>` and do some other things. In general, it manages a :ref:`Scene<class_Scene>` .
+Now we can take a look at how rendering works. :ref:`Scene<class_Scene>` has to have a manager or something simillar, Scene itself cannot update information about
+entities, there must be some other way. For that reason we have :ref:`SceneManager<class_SceneManager>` , which can push data to :ref:`RenderPipeline<class_RenderPipeline>` ,
+it can call ``update()`` method from :ref:`PythonScript<class_PythonScript>`. In general, it manages a :ref:`Scene<class_Scene>` .
 
 .. image:: img/scene_to_renderpipeline.png
     :width: 756
@@ -108,8 +108,8 @@ it can call ``update()`` method from :ref:`PythonScript<class_PythonScript>` and
 
 :ref:`SceneManager<class_SceneManager>` has the ability to push :ref:`Entities<class_Entity>` and :ref:`EntityCollections<class_EntityCollection>` to
 :ref:`RenderPipeline<class_RenderPipeline>` . Then RenderPipeline is reponsible for this data. It prepares the whole stuff for rendering, parses and then pushes it 
-to :ref:`RenderContainers<class_RenderContainer>` . Prepared data for rendering are stored in containers. When there is need for draw call, RenderPipeline is returning
-all the stored containers and :ref:`RendererBatch<class_RendererBatch>` is iterating over them. During every iteration stuff is being drawn into the screen.
+to :ref:`RenderContainers<class_RenderContainer>` . Prepared data for rendering is stored in containers. When there is need for draw call, RenderPipeline is returning
+all the stored containers and :ref:`RendererBatch<class_RendererBatch>` is iterating over them. During every iteration stuff is being drawn onto the screen.
 
 .. image:: img/renderpipeline_to_renderer.png
     :width: 957

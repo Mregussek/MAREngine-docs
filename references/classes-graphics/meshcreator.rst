@@ -7,7 +7,7 @@ MeshCreator
 MeshCreator is a class, that can fill :ref:`RenderableComponent<class_RenderableComponent>` with polygons (vertices, indices and its name). 
 
 It has 4 nested structures, which are basic types that MAREngine can render, also it has :ref:`loadOBJ<class_method_MeshCreator_loadOBJ>` which
-can get you external file loaded.
+can get your external file loaded.
 
 Nested Structures
 -----------------

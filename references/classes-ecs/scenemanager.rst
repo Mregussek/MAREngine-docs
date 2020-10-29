@@ -4,7 +4,7 @@
 SceneManager
 ============
 
-SceneManager is a manager for :ref:`Scene<class_Scene>` instance. It tells other engine parts in what state current scene is, like is it in PlayMode, EditorMode.
+SceneManager is a manager for :ref:`Scene<class_Scene>` instance. It tells other engine parts in what state the current scene is, like is it in PlayMode, EditorMode.
 Also it updates the whole scene in selected Mode and connects scene to graphics engine (pushes data into :ref:`RenderPipeline<class_RenderPipeline>` ).
 
 SceneManager has one friend class: 
@@ -40,7 +40,7 @@ Method calls :ref:`shutdown<class_method_Scene_shutdown>` from m_scene instance 
 | void update()                |
 +------------------------------+
 
-Method updates scene in selected mode. Checks if it is PlayMode, PauseMode or EditorMode and then updates scene proper mode.
+Method updates scene in selected mode. Checks if it is PlayMode, PauseMode or EditorMode and then updates scene to proper mode.
 
 Setters
 -------
@@ -51,7 +51,7 @@ Setters
 | void setScene( :ref:`Scene<class_Scene>` * scene)                |
 +------------------------------------------------------------------+
 
-Methos sets pointer to scene, that should be managed. Pass selected ``scene`` as a argument.
+Method sets pointer to scene which should be managed. Pass selected ``scene`` as an argument.
 
 .. _class_method_SceneManager_setEditorMode:
 
@@ -67,7 +67,7 @@ Use this method, if you want to be in EditorMode.
 | void setPlayMode()           |
 +------------------------------+
 
-Use this method, if you want to be in PlayMode. It initializes scripts and makes copy for all entities.
+Use this method, if you want to be in PlayMode. It initializes scripts and makes a copy for all entities.
 
 .. _class_method_SceneManager_setExitPlayMode:
 
@@ -75,7 +75,7 @@ Use this method, if you want to be in PlayMode. It initializes scripts and makes
 | void setExitPlayMode()       |
 +------------------------------+
 
-Use this method, if you want quit PlayMode. It loads all data, so that game is in its state before PlayMode was set.
+Use this method, if you want quit PlayMode. It loads all data, so that game is in the state set before PlayMode was set.
 
 .. _class_method_SceneManager_setPauseMode:
 
@@ -91,7 +91,7 @@ Use this method if you want to be in PauseMode.
 | void unsetPauseMode()        |
 +------------------------------+
 
-Use this method, if you want quit PauseMode.
+Use this method, if you want to quit PauseMode.
 
 Getters
 -------
@@ -180,7 +180,7 @@ Comparing to :ref:`updatePlayMode<class_method_SceneManager_updatePlayMode>` it 
 | void updateEntityInPlaymode(const :ref:`Entity<class_Entity>` & entity, :ref:`RenderPipeline<class_RenderPipeline>` & renderPipeline)                |
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Method is reponsible for pushing modified data in Play mode to :ref:`RenderPipeline<class_RenderPipeline>`. As a parameters it needs ``entity``, which was updated during 
+Method is reponsible for pushing modified data in Play mode to :ref:`RenderPipeline<class_RenderPipeline>`. As a parameter it needs ``entity``, which was updated during 
 last frame. This modified data from ``entity`` is pushed into passed ``renderPipeline``.
 
 .. _class_method_SceneManager_submitCameraIfPossible:
@@ -189,7 +189,7 @@ last frame. This modified data from ``entity`` is pushed into passed ``renderPip
 | bool submitCameraIfPossible() |
 +-------------------------------+
 
-Method iterates over all entiies that have :ref:`CameraComponent<class_CameraComponent>` and looks for one component with "main" in its camera ID. If found 
+Method iterates over all entiies that have :ref:`CameraComponent<class_CameraComponent>` and looks for one component with "main" in its camera ID. If found, 
 parameters of CameraComponent are passed to :ref:`RenderPipeline<class_RenderPipeline>`. Returns true, if camera ID with "main" was found, false otherwise.
 
 Members
@@ -201,7 +201,7 @@ Members
 | :ref:`Scene*<class_Scene>` m_scene      | ``nullptr``             |
 +-----------------------------------------+-------------------------+
 
-m_scene is a Scene pointer that need to be managed (that need to be played).
+m_scene is a Scene pointer that needs to be managed (that needs to be played).
 
 .. _class_member_Scene_m_playStorage:
 
@@ -225,5 +225,5 @@ m_EditorMode is a boolean, that contains information about current state of Scen
 | bool m_PauseMode       | ``false``             |
 +------------------------+-----------------------+
 
-m_PauseMode us a boolean, that contains information about current state of Scene - true for PauseMode, false for EditorMode or PlayMode.
-**Important note: m_pauseMode can be only true, if m_EditorMode is false (if there is PlayMode)!**
+m_PauseMode is a boolean, that contains information about current state of Scene - true for PauseMode, false for EditorMode or PlayMode.
+**Important note: m_pauseMode can be only true, if m_EditorMode is false (if there is PlayMode enabled)!**

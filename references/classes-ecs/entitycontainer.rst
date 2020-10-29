@@ -3,7 +3,7 @@
 EntityContainer
 ===============
 
-EntityContainer is a abstraction class for :ref:`Entity<class_Entity>` and :ref:`EntityCollection<class_EntityCollection>` storage. Now it is used as a member only by
+EntityContainer is an abstraction class for :ref:`Entity<class_Entity>` and :ref:`EntityCollection<class_EntityCollection>` storage. Now it is used as a member only by
 :ref:`mar::ecs::Scene<class_Scene>` . Contains only two members, entities vector and collections vector. Created, because there was a lot of linker errors and this
 was great solution to abstract those vectors.
 

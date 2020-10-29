@@ -4,7 +4,7 @@
 Vertex
 ======
 
-Vertex defines, what information MAREngine needs for proper rendering.
+Vertex defines what information MAREngine needs for proper rendering.
 
 Definition:
 
@@ -27,7 +27,7 @@ Members
 | :ref:`maths::vec3<class_marmaths_vec3>` position             |
 +--------------------------------------------------------------+
 
-``position`` is just a point in space, that defines position of this vertex.
+``position`` is just a point in space that defines position of this vertex.
 
 .. _class_member_Vertex_lightNormal:
 
@@ -43,7 +43,7 @@ Members
 | :ref:`maths::vec2<class_marmaths_vec2>` textureCoordinates   |
 +--------------------------------------------------------------+
 
-``textureCoordinates`` variable says how some texture can fit that vertex.
+``textureCoordinates`` variable says how a texture can fit into that vertex.
 
 .. _class_member_Vertex_shapeID:
 

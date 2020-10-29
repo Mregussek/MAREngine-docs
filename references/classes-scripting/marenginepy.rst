@@ -4,12 +4,12 @@
 MAREnginePy
 ===========
 
-**MAREnginePy** is a embedded Python module that you can import and use along with MAREngine.
+**MAREnginePy** is an embedded Python module that you can import and use along with MAREngine.
 
 With this module you can modify entities :ref:`TransformComponent<class_TransformComponent>`, :ref:`ColorComponent<class_ColorComponent>`, :ref:`LightComponent<class_LightComponent>`
 and :ref:`CameraComponent<class_CameraComponent>` .
 
-I have embedded :ref:`MARMaths<3rdparty_marmaths>` library, components that are above and Entity with its Trampoline. About Trampoline you can read in
+I have embedded :ref:`MARMaths<3rdparty_marmaths>` library, components that are above and Entity with its Trampoline.  You can read about Trampolineread in
 :ref:`pybind11<3rdparty_pybind11>` documentation.
 
 We have:

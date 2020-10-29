@@ -14,8 +14,8 @@ Public Static Methods
 | static void copyEntity(const :ref:`Entity<class_Entity>` & src, const :ref:`Entity<class_Entity>` & dst)                        |
 +---------------------------------------------------------------------------------------------------------------------------------+
 
-Method copies ``src`` Entity instance to ``dst``. Please make sure, that both entities passed are valid. Copying entity means that, every component attached to ``src``
-entity is copied into ``dst`` entity instance. Method checks, if ``dst`` already have those components, if has components are replaced, if not they are added.
+Method copies ``src`` Entity instance to ``dst``. Please make sure, that both entities passed are valid. Copying entity means that every component attached to ``src``
+entity is copied into ``dst`` entity instance. Method checks, if ``dst`` already has those components, if so, components are replaced, if not they are added.
 
 .. _class_method_EntityOperation_copyCollection:
 
@@ -23,8 +23,8 @@ entity is copied into ``dst`` entity instance. Method checks, if ``dst`` already
 | static void copyCollection(const :ref:`EntityCollection<class_EntityCollection>` & src, const :ref:`EntityCollection<class_EntityCollection>` & dst)   |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Method copies ``src`` EntityCollection to ``dst``. Please make sure, that both collections passed are valid. Copying collection means that, every component attached to ``src``
-collection is copied into ``dst`` instance. Secondly method is created new entities and calls :ref:`copyEntity<class_method_EntityOperation_copyEntity>` method 
+Method copies ``src`` EntityCollection to ``dst``. Please make sure, that both collections passed are valid. Copying collection means that every component attached to ``src``
+collection is copied into ``dst`` instance. Secondly method creates new entities and calls :ref:`copyEntity<class_method_EntityOperation_copyEntity>` method 
 for entities that are stored in collection.
 
 Private Static Methods

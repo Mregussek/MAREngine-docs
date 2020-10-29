@@ -40,7 +40,7 @@ Method resets whole RenderPipeline. Iterates over all :ref:`m_containers<class_m
 | void submitEntity(const :ref:`ecs::Entity<class_Entity>` & entity)      |
 +-------------------------------------------------------------------------+
 
-Method submits ``entity`` to RenderPipeline. Checks its components (if it can be renderer for instance) and then pushes its data into some container.
+Method submits ``entity`` to RenderPipeline. Checks its components (if it can be renderer for instance) and then pushes its data into a container.
 
 .. _class_method_RenderPipeline_submitCamera:
 
@@ -80,7 +80,7 @@ Method replaces current :ref:`ColorComponent<class_ColorComponent>` at ``contain
 | void clearStatistics()      |
 +-----------------------------+
 
-Method resets statistics to its default values.
+Method resets statistics to their default values.
 
 Getters
 ~~~~~~~
@@ -92,7 +92,7 @@ Getters
 +--------------------------------------------------------------------------+
 
 Method returns reference to :ref:`m_statistics<class_member_RenderPipeline_m_statistics>` . 
-Non-const, because we want to in GUI Editor we want to calculate some things in original variable.
+Non-const, because in GUI Editor we want to calculate some things using the original variable.
 
 .. _class_method_RenderPipeline_getContainers:
 
@@ -151,7 +151,7 @@ to entity's :ref:`RenderPipelineComponent<class_RenderPipelineComponent>` .
 +----------------------------------------------------------------------------------------------------------------------------+
 
 Method submits :ref:`Texture2DComponent<class_Texture2DComponent>` to RenderPipeline. ``entityIndex`` is a value returned by :ref:`submitRenderable<class_method_RenderPipeline_submitRenderable>` .
-It also pushes 1 to sampler types, which means we have submitted texture 2D. Returns ``colorIndex`` that must be assigned 
+It also pushes 1 to sampler types, which means we have submitted a 2D texture . Returns ``colorIndex`` that must be assigned 
 to entity's :ref:`RenderPipelineComponent<class_RenderPipelineComponent>` .
 
 .. _class_method_RenderPipeline_submitCubemap:
@@ -183,7 +183,7 @@ Setters
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Method is looking for available container for rendering data and saves this information to :ref:`m_availableContainerIndex<class_member_RenderPipeline_m_availableContainerIndex>` .
-``rpc`` is entity's :ref:`RenderPipelineComponent<class_RenderPipelineComponent>` , ``verticesToPush`` is a number of vertices that is going to be pushed during 
+``rpc`` is entity's :ref:`RenderPipelineComponent<class_RenderPipelineComponent>` , ``verticesToPush`` is the number of vertices that is going to be pushed during 
 next submit, ``indicesToPush`` is the same but for indices.
 
 .. _class_method_RenderPipeline_setAvailableContainerLight:

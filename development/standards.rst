@@ -3,7 +3,7 @@ Coding Standards
 
 .. seealso::
 
-    This page describes the C++ coding standards used in MAREngine. If you are going to contribute MAREngine, please read this.
+    This page describes the C++ coding standards used in MAREngine. If you are going to contribute to MAREngine, please read this.
 
 
 Naming conventions
@@ -17,15 +17,15 @@ How to choose name?
     // namespaces can be made up of one word, only lower case letters
     namespace example {
 
-        // all variables are starting from lower letter, any other word is starting from big letter
+        // all variables are starting from lower letter, any other word is starting from capital letter
         float someVariable;
         float someLongNameForVariable;
 
-        // all functions are starting from lower letter, any other word is starting from big letter
+        // all functions are starting from lower letter, any other word is starting from capital letter
         void someFunction();
         void someLongNameForMethod();
 
-        // all classes are starting from big letter, any other word is starting from big letter
+        // all classes are starting from capital letter, any other word is starting from capital letter
         class SomeClass;
         class SomeOtherClass;
 

@@ -4,12 +4,12 @@
 RenderContainer
 ===============
 
-RenderContainer as the name says, it is container for data that is prepared to render.
+RenderContainer, as the name says,  is a container for data that is prepared to render.
 
 It contains only getter methods and one friend class, which is :ref:`RenderPipeline<class_RenderPipeline>` . Other classes, such as :ref:`RendererBatch<class_RendererBatch>`
-must to use getter methods. I want to give ability to modify RenderContainers only to :ref:`RenderPipeline<class_RenderPipeline>` .
+must use getter methods. I want to give ability to modify RenderContainers only to :ref:`RenderPipeline<class_RenderPipeline>` .
 
-It contains some typedefs in order to make it clear what is the purpose of something:
+It contains some typedefs in order to make it clear what is its purpose :
 
 .. _class_RenderContainer_typedefs:
 
@@ -33,7 +33,7 @@ Public Methods
 | void reset()    |
 +-----------------+
 
-Provides whole cleanup for container, clears everthing it stores.
+Provides whole cleanup for container, clears whole storage.
 
 Getters
 -------

@@ -4,7 +4,7 @@
 RendererStatistics
 ==================
 
-It is a struct, that can can tell a word rendering. I believe code is self-explanatory, so there won't be much.
+It is a struct, that can can tell a word rendering. I believe code is self-explanatory, so there won't be much said here.
 
 .. code-block:: cpp
 

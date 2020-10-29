@@ -3,7 +3,7 @@
 Scene
 =====
 
-Scene is some kind of game itself. It has information about all entities and collections, can create all new entities and destroy them.
+Scene is a kind of game itself. It has information about all entities and collections, can create all new entities and destroy them.
 
 Scene has two friend classes: 
 
@@ -19,7 +19,7 @@ Constructors / Destructors
 | Scene(std::string name)                |
 +----------------------------------------+
 
-It is default constructor for Scene class, it assigns scene's name and creates new :ref:`SceneRegistry<class_SceneRegistry>` .
+It is the default constructor for Scene class, it assigns scene's name and creates new :ref:`SceneRegistry<class_SceneRegistry>` .
 
 Static Public Methods
 ---------------------
@@ -94,7 +94,7 @@ Setters
 | void setName(std::string name)                 |
 +------------------------------------------------+
 
-Method sets new scene name. Pass as a argument new name.
+Method sets new scene name. Pass new name as an argument .
 
 .. _class_method_Scene_setBackground:
 
@@ -102,7 +102,7 @@ Method sets new scene name. Pass as a argument new name.
 | void setBackground( :ref:`maths::vec3<class_marmaths_vec3>` v)      |
 +---------------------------------------------------------------------+
 
-Method sets new background color for scene. Pass as a argument new color.
+Method sets new background color for scene. Pass new color as an argument .
 
 Getters
 -------
@@ -121,8 +121,8 @@ Method returns const reference to name. We don't want it to be modified with any
 | :ref:`maths::vec3<class_marmaths_vec3>` & getBackground()            |
 +----------------------------------------------------------------------+
 
-Method returns reference to background color. Non-const reference, because during editor mode we want to have ability to change its values with sliders.
-I think making copy and assigning it again is unnecessary.
+Method returns reference to background color. Non-const reference, because during editor mode we want to have the ability to change its values with sliders.
+I think making a copy and assigning it again is unnecessary.
 
 .. _class_method_Scene_getEntities:
 

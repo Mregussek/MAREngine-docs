@@ -4,7 +4,7 @@
 Layer
 =====
 
-Layer is a abstraction class for MAREngine's workflow. This is base class for other layers, for instance :ref:`EntityLayer<class_EntityLayer>` is a derived one.
+Layer is an abstraction class for MAREngine's workflow. This is the base class for other layers, for instance :ref:`EntityLayer<class_EntityLayer>` is a derived one.
 It provides virtual methods ``initialize``, ``update`` and ``close`` .
 
 Constructors / Destructors

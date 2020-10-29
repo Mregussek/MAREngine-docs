@@ -23,7 +23,7 @@ Starts static interpreter and then appends current path, which is ``.`` to embed
 | static std::string changeSlashesToDots(std::string script)      |
 +-----------------------------------------------------------------+
 
-In given ``script`` variable, which is path to script, method is chaning all slashes to dots. Example: "/some/path/file.py"  --->  ".some.path.file.py"
+In given ``script`` variable, which is path to script, method is changing all slashes to dots. Example: "/some/path/file.py"  --->  ".some.path.file.py"
 
 .. _class_method_PythonScript_getModuleFromPath:
 
@@ -43,7 +43,7 @@ Public Methods
 | void loadScript(std::string path_to_script)      |
 +--------------------------------------------------+
 
-Method is loading script from given ``path_to_script`` and imports module to :ref:`m_scriptModule<class_member_PythonScript_m_scriptModule>` variable. If it is first run
+Method is loading script from given ``path_to_script`` and imports module to :ref:`m_scriptModule<class_member_PythonScript_m_scriptModule>` variable. If it is its first run
 sets :ref:`m_initialized<class_member_PythonScript_m_initialized>` to ``true``. Creates new instance of loaded class from module to 
 :ref:`m_module<class_member_PythonScript_m_module>` variable.
 

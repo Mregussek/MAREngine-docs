@@ -18,7 +18,7 @@ PyEntity
 * :ref:`ecs::CameraComponent<class_CameraComponent>` camera;
 * :ref:`ecs::ColorComponent<class_ColorComponent>` color;
 
-and 2 methods, which can be inherited and overrided in python file:
+and 2 methods, which can be inherited and overridden in python file:
 
 * virtual void start()
 * virtual void update()
@@ -29,4 +29,4 @@ PyTrampoline
 ------------
 
 This is the trampoline for PyEntity's virtual methods. It inherits from PyEntity and overrides its ``start()`` and ``update()`` methods.
- They are overrided for proper usage in :ref:`MAREnginePy<class_MAREnginePy>` .
+ They are overridden for proper usage in :ref:`MAREnginePy<class_MAREnginePy>` .

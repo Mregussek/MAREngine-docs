@@ -3,7 +3,7 @@
 SceneEvents
 ===========
 
-SceneEvents is a abstraction layer for Event system during all Scene operations. Using this method we can update stuff during engine execution. There is one static member,
+SceneEvents is an abstraction layer for Event system during all Scene operations. Using this method we can update stuff during engine execution. There is one static member,
 which has to be called in order to execute event. Example:
 
 .. code-block:: cpp
@@ -54,7 +54,7 @@ Transform
 
 Method should be called, when :ref:`TransformComponent<class_TransformComponent>` is updated, which means that if user called 
 :ref:`recalculate<class_method_TransformComponent_recalculate>` method or updated component in any other way. As argument should be
-passed pointer to entity, which component was updated.
+passed as pointer to entity, whose component was updated.
 
 Renderable
 ~~~~~~~~~~
@@ -74,7 +74,7 @@ Method should be called if user added :ref:`RenderableComponent<class_Renderable
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`RenderableComponent<class_RenderableComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onRenderableRemove:
 
@@ -102,7 +102,7 @@ Method should be called if user added :ref:`CameraComponent<class_CameraComponen
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`CameraComponent<class_CameraComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onCameraRemove:
 
@@ -130,7 +130,7 @@ Method should be called if user added :ref:`ColorComponent<class_ColorComponent>
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`CColorComponent<class_ColorComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onColorRemove:
 
@@ -158,7 +158,7 @@ Method should be called if user added :ref:`Texture2DComponent<class_Texture2DCo
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`Texture2DComponent<class_Texture2DComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onTexture2DRemove:
 
@@ -186,7 +186,7 @@ Method should be called if user added :ref:`TextureCubemapComponent<class_Textur
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`TextureCubemapComponent<class_TextureCubemapComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onTextureCubemapRemove:
 
@@ -214,7 +214,7 @@ Method should be called if user added :ref:`LightComponent<class_LightComponent>
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`LightComponent<class_LightComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onLightRemove:
 
@@ -242,7 +242,7 @@ Method should be called if user added :ref:`ScriptComponent<class_ScriptComponen
 +-----------------------------------------------------------------------------+
 
 Method should be called if user updated :ref:`ScriptComponent<class_ScriptComponent>` in an :ref:`Entity<class_Entity>` instance.
-As argument should be passed pointer to entity, which component was updated.
+As argument should be passed as pointer to entity, whose component was updated.
 
 .. _class_method_SceneEvents_onScriptRemove:
 
@@ -294,8 +294,8 @@ Method should be called, when user has deleted :ref:`EntityCollection<class_Enti
 | void onCollectionOBJloaded(const :ref:`EntityCollection<class_EntityCollection>` & collection) const             |
 +------------------------------------------------------------------------------------------------------------------+
 
-Method should be called, when user has loaded some external file into :ref:`EntityCollection<class_EntityCollection>` instance. As a argument
-should be passed ``collection`` that has been filled with that external data.
+Method should be called, when user has loaded some external file into :ref:`EntityCollection<class_EntityCollection>` instance.``collection`` should be passed as an argument
+ that has been filled with that external data.
 
 Static Members
 --------------

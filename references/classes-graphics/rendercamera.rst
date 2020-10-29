@@ -3,7 +3,7 @@
 RenderCamera
 ============
 
-RenderCamera is a abstraction for Model-View-Projection matrices. It defines an eye, an camera in order to watch scene.
+RenderCamera is an abstraction for Model-View-Projection matrices. It defines an eye and camera in order to watch scene.
 
 Because it does some math stuff, I created 3 typedefs:
 

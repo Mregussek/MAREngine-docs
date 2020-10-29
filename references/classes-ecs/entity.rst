@@ -4,7 +4,7 @@
 Entity
 ======
 
-The entity is a general purpose object. It only consists of a unique id (uint32_t, which can found at :ref:`entt::entity<class_entt_entity>` ). Every entity is container, where some
+The entity is a general purpose object. It only consists of a unique id (uint32_t, which can found at :ref:`entt::entity<class_entt_entity>` ). Every entity is a container, where
 :ref:`components<ecs_Components>` can be attached. Entities are the base of all objects, that can be found in the scene.
 
 .. warning::
@@ -17,7 +17,7 @@ The entity is a general purpose object. It only consists of a unique id (uint32_
 .. attention::
 
     By default every entity should have its :ref:`TagComponent<class_TagComponent>` and :ref:`TransformComponent<class_TransformComponent>`! So there is no need to check if
-    Entity has those components attached! Luck of them is considered as a huge error!
+    Entity has those components attached! A lack of them is considered a huge error!
 
 
 Entity has two friend classes:
@@ -80,7 +80,7 @@ Method checks, if current Entity is valid (valid means, if entity is created). M
 | template<typename T> const bool hasComponent() const    |
 +---------------------------------------------------------+
 
-Method returns true, if entity has component attached. It is templated method, where ``T`` stands for component. Marked const, as it does not modify Entity instance.
+Method returns true, if entity has component attached. It is a templated method, where ``T`` stands for component. Marked const, as it does not modify Entity instance.
 
 .. _class_method_Entity_addComponent:
 
@@ -147,4 +147,4 @@ Members
 +--------------------------------------------------------------------+-------------------------+
 
 ``m_scene`` is a pointer to :ref:`SceneRegistry<class_SceneRegistry>` instance. Using this pointer we can add, remove, remove and do other stuff with components.
-It is some sort of storage of every entity. By default it ``nullptr``. 
+It is a sort of storage of every entity. By default its a  ``nullptr``. 

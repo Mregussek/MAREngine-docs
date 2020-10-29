@@ -4,7 +4,7 @@
 RendererBatch
 =============
 
-RendererBatch is a renderer, than can draw :ref:`RenderPipeline's<class_RenderPipeline>` data to the screen.
+RendererBatch is a renderer, than can draw :ref:`RenderPipeline's<class_RenderPipeline>` data onto the screen.
 
 Public Methods
 --------------

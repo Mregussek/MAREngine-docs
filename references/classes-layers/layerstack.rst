@@ -4,8 +4,8 @@
 LayerStack
 ==========
 
-LayerStack is just a stack for of the layers. It contains ``initialize``, ``update`` and ``close`` methods, where it iterates over all layers and calls 
-its implementation of those methods.
+LayerStack is just a stack for the layers. It contains ``initialize``, ``update`` and ``close`` methods, where it iterates over all layers and calls 
+and its implementation of those methods.
 
 Public Methods
 --------------

@@ -3,7 +3,7 @@
 EntityCollection
 ================
 
-EntityCollection is a collection of entities. This is class written specially for having several entities that are depedent om collection parameters (for instance
+EntityCollection is a collection of entities. This is a class written aspecially for having several entities that are depedent on collection parameters (for instance
 :ref:`TransformComponent<class_TransformComponent>` , we want to have impact on every entities position, rotation and other. Or let's say we want to create one giant Entity from other entities).
 
 .. _attention_Tag_Transform_DefaultComponents_EntityCollection:
@@ -11,7 +11,7 @@ EntityCollection is a collection of entities. This is class written specially fo
 .. attention::
 
     By default every entity should have its :ref:`TagComponent<class_TagComponent>` and :ref:`TransformComponent<class_TransformComponent>`! So there is no need to check if
-    Entity has those components attached! Luck of them is considered as a huge error!
+    Entity has those components attached! A lack of them is considered  a huge error!
 
 EntityCollection has one friend class:
 
@@ -83,7 +83,7 @@ Marked const, as it does not modify EntityCollection instance.
 | template<typename T> bool hasComponent() const          |
 +---------------------------------------------------------+
 
-Method returns true, if collection has component attached. It is templated method, where ``T`` stands for component. Marked const, as it does not modify EntityCollection instance.
+Method returns true, if collection has component attached. It is a templated method, where ``T`` stands for component. Marked const, as it does not modify EntityCollection instance.
 
 .. _class_method_EntityCollection_addComponent:
 
@@ -141,7 +141,7 @@ Members
 | :ref:`entt::entity<class_entt_entity>` m_collectionHandle      | ``entt::null``          |
 +----------------------------------------------------------------+-------------------------+
 
-``m_collectionHandle`` is unique ID for this EntityCollection instance. By default is ``entt::null``, which stands for not valid collection.
+``m_collectionHandle`` is unique ID for this EntityCollection instance. Default is ``entt::null``, which stands for invalid collection.
 
 .. _class_member_EntityCollection_m_scene:
 
@@ -150,4 +150,4 @@ Members
 +--------------------------------------------------------------------+-------------------------+
 
 ``m_scene`` is a pointer to :ref:`SceneRegistry<class_SceneRegistry>` instance. Using this pointer we can add, remove, remove and do other stuff with components.
-It is some sort of storage of every entity.  By default it ``nullptr``.
+It is some a of storage of every entity.  By default it is a ``nullptr``.

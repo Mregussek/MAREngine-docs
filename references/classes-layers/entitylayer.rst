@@ -24,7 +24,7 @@ Method is responsible for initialize its all members.
 | void update() override                            |
 +---------------------------------------------------+
 
-Method firstly updates SceneManager, then data which RenderPipeline has got from the SceneManager is pushed to RendererBatch for draw call.
+Method firstly updates SceneManager, then data which RenderPipeline gets from the SceneManager is pushed to RendererBatch for draw call.
 
 .. _class_method_EntityLayer_closeLayer:
 
@@ -32,7 +32,7 @@ Method firstly updates SceneManager, then data which RenderPipeline has got from
 | void closeLayer() override                            |
 +-------------------------------------------------------+
 
-Method is closing its all components.
+Method is closing all of its components.
 
 Public Methods
 --------------

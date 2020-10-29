@@ -4,8 +4,8 @@ ScenePlayStorage
 ================
 
 As the name suggests, ``ScenePlayStorage`` is storage for Scene during Play mode. When we are editing scene in Editor Mode and then want to test our game,
-we click Play button and after those tests we expect that engine saved all important data about scene. Any actions from Play mode should have no impact into
-Editor mode. This method just saves state of scene before Play button clicked.
+we click Play button and after those tests we expect that engine will have saved all important data about scene. Any actions from Play mode should have no impact on
+Editor mode. This method just saves state of scene from before Play button was clicked.
 
 It has two nested classes to help organize things:
 
@@ -21,7 +21,7 @@ Public Methods
 | void pushEntityToStorage(const :ref:`Entity<class_Entity>` & entity) |
 +----------------------------------------------------------------------+
 
-Method pushes :ref:`Entity<class_Entity>` to :ref:`m_entityStorage<class_member_ScenePlayStorage_m_entityStorage>` member. Firstly creates new storage in vector and then
+Method pushes :ref:`Entity<class_Entity>` to :ref:`m_entityStorage<class_member_ScenePlayStorage_m_entityStorage>` member. Firstly it creates new storage in vector and then
 pushes data from entity to that variable.
 
 .. _class_method_ScenePlayStorage_pushCollectionToStorage:
@@ -31,7 +31,7 @@ pushes data from entity to that variable.
 +--------------------------------------------------------------------------------------------------+
 
 Method pushes :ref:`EntityCollection<class_EntityCollection>` to :ref:`m_collectionStorage<class_member_ScenePlayStorage_m_collectionStorage>` member. Firstly 
-creates new storage in vector and then pushes data from collection to that variable.
+it creates new storage in vector and then pushes data from collection to that variable.
 
 .. _class_method_ScenePlayStorage_loadEntityFromStorage:
 
@@ -39,7 +39,7 @@ creates new storage in vector and then pushes data from collection to that varia
 | void loadEntityFromStorage(const :ref:`Entity<class_Entity>` & entity) |
 +------------------------------------------------------------------------+
 
-Method loads entity's from :ref:`m_entityStorage<class_member_ScenePlayStorage_m_entityStorage>` member and afterwards deletes unneeded storage.
+Method loads entity's from :ref:`m_entityStorage<class_member_ScenePlayStorage_m_entityStorage>` member and afterwards deletes unnecessary storage.
 
 .. _class_method_ScenePlayStorage_loadCollectionFromStorage:
 
@@ -47,7 +47,7 @@ Method loads entity's from :ref:`m_entityStorage<class_member_ScenePlayStorage_m
 | void loadCollectionFromStorage(const :ref:`EntityCollection<class_EntityCollection>` & collection) |
 +----------------------------------------------------------------------------------------------------+
 
-Method loads collection's data from :ref:`m_collectionStorage<class_member_ScenePlayStorage_m_collectionStorage>` member and afterwards deletes unneeded storage.
+Method loads collection's data from :ref:`m_collectionStorage<class_member_ScenePlayStorage_m_collectionStorage>` member and afterwards deletes unnecessary storage.
 
 .. _class_method_ScenePlayStorage_clear:
 
@@ -55,7 +55,7 @@ Method loads collection's data from :ref:`m_collectionStorage<class_member_Scene
 | void clear() |
 +--------------+
 
-Method is responsible for whole cleanup stuff in storages. It clears all memory used by every storage and make them ready for other run.
+Method is responsible for whole cleanup stuff in storages. It clears all memory used by every storage and makes them ready for a new run.
 
 Private Methods
 ---------------
@@ -66,8 +66,8 @@ Private Methods
 | void pushEntityToStorage(std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` >& vectorStorage, const :ref:`Entity<class_Entity>` & entity) |
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Because there was issue with differentiating :ref:`Entity<class_Entity>` class instances and entities from :ref:`EntityCollection<class_EntityCollection>` I have created
-private method, where we can explicitly tell, to which storage should we pass data.
+Because there was an issue with differentiating :ref:`Entity<class_Entity>` class instances and entities from :ref:`EntityCollection<class_EntityCollection>` I have created
+a private method, where we can explicitly tell, to which storage should we pass data.
 
 .. _class_method_ScenePlayStorage_pushOperation:
 
@@ -75,7 +75,7 @@ private method, where we can explicitly tell, to which storage should we pass da
 | void pushOperation(:ref:`EntityStorage<nested_class_EntityStorage>` & storage, const :ref:`Entity<class_Entity>` & entity);                          |
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-``pushOperation`` is method created in order to make it clear, that this body is responsible for push data into storage.
+``pushOperation`` is a method created in order to make it clear, that this body is responsible for push data into storage.
 
 .. _class_method_ScenePlayStorage_loadEntityFromStorage_private:
 
@@ -83,8 +83,8 @@ private method, where we can explicitly tell, to which storage should we pass da
 | void loadEntityFromStorage(std::vector< :ref:`EntityStorage<nested_class_EntityStorage>` >& vectorStorage, const :ref:`Entity<class_Entity>` & entity) |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-Because there was issue with differentiating :ref:`Entity<class_Entity>` class instances and entities from :ref:`EntityCollection<class_EntityCollection>` I have created
-private method, where we can explicitly tell, from which storage should we load data.
+Because there was an issue with differentiating :ref:`Entity<class_Entity>` class instances and entities from :ref:`EntityCollection<class_EntityCollection>` I have created
+a private method, where we can explicitly tell, from which storage should we load data.
 
 .. _class_method_ScenePlayStorage_loadOperation:
 
@@ -92,7 +92,7 @@ private method, where we can explicitly tell, from which storage should we load 
 | void loadOperation(const :ref:`EntityStorage<nested_class_EntityStorage>` & storage, const :ref:`Entity<class_Entity>` & entity)                     |
 +------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-``loadOperation`` is method created in order to make it clear, that this body is responsible for loading data from storage.
+``loadOperation`` is a method created in order to make it clear, that this body is responsible for loading data from storage.
 
 Members
 -------
@@ -149,15 +149,15 @@ There is need to save entities light parameters, script can change ambient light
 | :ref:`ColorComponent<class_ColorComponent>` color               |
 +-----------------------------------------------------------------+
 
-If entity contains has :ref:`ColorComponent<class_ColorComponent>` , during runtime script can change entity's color.
+If entity contains has :ref:`ColorComponent<class_ColorComponent>`  during runtime, script can change entity's color.
 
 .. _nested_class_CollectionStorage:
 
 CollectionStorage
 ~~~~~~~~~~~~~~~~~
 
-:ref:`EntityCollection<class_EntityCollection>` is a collection of some :ref:`entities<class_Entity>`. To make it clear, that those storages belongs to specific
-collection I have added CollectionStorage class. It contains vector of :ref:`EntityStorage<nested_class_EntityStorage>`.
+:ref:`EntityCollection<class_EntityCollection>` is a collection of :ref:`entities<class_Entity>`. To make it clear, that those storages belong to specific
+collections I have added CollectionStorage class. It contains vector of :ref:`EntityStorage<nested_class_EntityStorage>`.
 
 Public Methods
 ``````````````

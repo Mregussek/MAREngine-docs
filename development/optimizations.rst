@@ -27,8 +27,7 @@ Heap Allocations
 * Deallocations are the second most expensive
 * So reduce them as much as possible, ideally to zero
     * Count your allocations
-* Most of the Standard containers and almost any use
-of new (or smart pointers) uses the heap
+* Most of the Standard containers and almost any use of new (or smart pointers) uses the heap
 
 Integer Operations
 ~~~~~~~~~~~~~~~~~~
@@ -217,3 +216,4 @@ A more cleaner way to do it:
         const auto [min_elem, max_elem] = std::minmax_element(begin, end);
         return *max_elem - *min_elem;
     }
+

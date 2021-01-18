@@ -63,8 +63,8 @@ How to name variables in class?
     float p_member;     // protected member, add p_ prefix
     float member;       // public member, we don't need any prefix
 
-Functions
----------
+Functions-Standards
+-------------------
 
 Follow Single-Responsibility-Principle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

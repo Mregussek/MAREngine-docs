@@ -12,6 +12,12 @@ Make sure that you have sphinx installed!
 pip install sphinx
 ```
 
+Quickstart:
+
+```bash
+python -m sphinx.cmd.quickstart
+```
+
 Build website:
 
 ```powershell

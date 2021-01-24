@@ -1,3 +1,4 @@
+
 .. _api_scene:
 
 Scene
@@ -5,3 +6,4 @@ Scene
 
 .. doxygenfile:: Core/ecs/Scene.h
    :project: C++ Sphinx Doxygen Breathe
+

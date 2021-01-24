@@ -10,11 +10,12 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+import subprocess
+sys.path.insert(0, os.path.abspath('.'))
 from sphinx.builders.html import StandaloneHTMLBuilder
-import subprocess, os
+
 
 # Doxygen
 subprocess.call('doxygen Doxyfile', shell=True)
@@ -101,3 +102,56 @@ breathe_projects = {
 }
 breathe_default_project = "C++ Sphinx Doxygen Breathe"
 breathe_default_members = ('members', 'undoc-members')
+
+
+# -- Cpp files creation ----------------------------------------------------
+
+from bs4 import BeautifulSoup
+
+marengine_xml_path = "_build/xml/"
+marengine_classes_xml = [marengine_xml_path + x for x in os.listdir(marengine_xml_path) if x.startswith("_") and x.endswith("h.xml")]
+
+references_path = "references/"
+cpp_rst_file_template = """
+.. _api_{}:
+
+{}
+{}
+
+.. doxygenfile:: {}
+   :project: C++ Sphinx Doxygen Breathe
+
+"""
+
+for xml_file in marengine_classes_xml:
+    print("Parsing file {}...".format(xml_file))
+
+    xml_parsed = None
+    with open(xml_file, "r") as f:
+        xml_source = f.read()
+        xml_parsed = BeautifulSoup(xml_source, features="lxml")
+
+    xml_filename = xml_parsed.doxygen.compounddef.compoundname.get_text()
+    location = xml_parsed.doxygen.compounddef.location['file'].split("MAREngine/src/")[1]
+
+    xml_classname = None
+    try:
+        xml_classname = xml_parsed.doxygen.compounddef.innerclass.get_text()[len("marengine::"):]
+    except AttributeError:
+        continue
+
+    xml_filename_without_ext = xml_filename[:(len(xml_filename) - 2)]
+    create_file = references_path + xml_filename_without_ext.lower() + ".rst"
+
+    print("Creating file {} and pushing code to it...".format(create_file))
+    with open(create_file, "w") as f:
+        should_use_page_name = "Definitions" in xml_filename_without_ext or "Components" in xml_filename_without_ext or "Uniforms" in xml_filename_without_ext
+        page_name = xml_filename_without_ext if should_use_page_name else xml_classname
+
+        rst_source = cpp_rst_file_template.format(
+            xml_filename_without_ext.lower(), 
+            page_name, 
+            "=" * len(page_name), 
+            location
+        )
+        f.write(rst_source)
